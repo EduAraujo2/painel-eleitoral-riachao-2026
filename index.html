@@ -1,0 +1,3354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
+  <title>
+   Painel Eleitoral 2026 • Riachão do Dantas
+  </title>
+  <style>
+   :root {
+  --bg:#f3f3f1;
+  --surface:#fff;
+  --text:#2f3134;
+  --muted:#6d7276;
+  --yellow:#efb800;
+  --yellow2:#fff5c8;
+  --olive:#738d2e;
+  --olive2:#eef3df;
+  --line:#dedfd9;
+  --shadow:0 7px 22px rgba(0,0,0,.07)
+}
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial
+}
+.topline {
+  height:4px;
+  background:var(--yellow)
+}
+.header {
+  background:#fff;
+  border-bottom:1px solid #e6e6e2;
+  box-shadow:0 2px 10px rgba(0,0,0,.04)
+}
+.hi {
+  max-width:1440px;
+  margin:auto;
+  padding:14px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:16px
+}
+.logo {
+  font-size:12px;
+  font-weight:900;
+  line-height:.9
+}
+.logo b {
+  display:block;
+  color:var(--yellow);
+  font-size:28px
+}
+.title h1 {
+  font-size:clamp(20px,2.4vw,30px);
+  margin:0;
+  letter-spacing:-.03em
+}
+.title p {
+  font-size:12px;
+  color:var(--muted);
+  margin:4px 0 0
+}
+.wrap {
+  max-width:1440px;
+  margin:auto;
+  padding:18px 22px 36px
+}
+.tabs {
+  display:flex;
+  gap:6px;
+  overflow:auto;
+  border-bottom:1px solid var(--line);
+  padding-bottom:12px
+}
+.tab {
+  border:1px solid transparent;
+  background:transparent;
+  padding:11px 15px;
+  border-radius:8px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer
+}
+.tab.active {
+  background:var(--olive);
+  color:#fff
+}
+.section {
+  display:none
+}
+.section.active {
+  display:block
+}
+.grid4 {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:18px
+}
+.card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  box-shadow:var(--shadow)
+}
+.kpi {
+  padding:17px
+}
+.kpi .lab {
+  font-size:11px;
+  text-transform:uppercase;
+  font-weight:800;
+  color:var(--muted)
+}
+.kpi .val {
+  font-size:30px;
+  font-weight:900;
+  margin-top:5px
+}
+.kpi .sub {
+  font-size:12px;
+  color:#85898c;
+  margin-top:4px
+}
+.panel {
+  padding:20px;
+  margin-top:15px
+}
+h2 {
+  font-size:20px;
+  margin:0 0 14px
+}
+.notice {
+  background:#fff8dc;
+  border-left:4px solid var(--yellow);
+  padding:12px 14px;
+  border-radius:9px;
+  font-size:13px;
+  color:#5d5438;
+  margin-bottom:14px
+}
+.controls {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px
+}
+label {
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  color:#555a5e;
+  margin-bottom:6px
+}
+select,input {
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #cfd1ca;
+  border-radius:9px;
+  background:#fff;
+  color:#25282b;
+  font-size:14px;
+  outline:none
+}
+select:focus,input:focus {
+  border-color:var(--olive);
+  box-shadow:0 0 0 3px rgba(115,141,46,.12)
+}
+.two {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px
+}
+.cand {
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  position:relative;
+  min-height:132px
+}
+.cand:before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:5px;
+  background:var(--yellow)
+}
+.cand .num {
+  font-size:12px;
+  color:#7b7f83;
+  font-weight:800
+}
+.cand .name {
+  font-size:21px;
+  font-weight:900;
+  margin:6px 0
+}
+.party {
+  display:inline-block;
+  background:var(--olive2);
+  color:#566b22;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800
+}
+.result {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:14px
+}
+.scorebox {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  text-align:center
+}
+.score {
+  font-size:42px;
+  font-weight:900;
+  color:#d49f00
+}
+.pct {
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px
+}
+.bar {
+  height:8px;
+  background:#ecece8;
+  border-radius:999px;
+  overflow:hidden;
+  margin-top:12px
+}
+.bar>i {
+  display:block;
+  height:100%;
+  background:var(--olive);
+  width:0
+}
+.meta {
+  margin-top:12px;
+  font-size:12px;
+  color:var(--muted)
+}
+.tablewrap {
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:12px
+}
+.tablewrap table {
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+  font-size:13px
+}
+th,td {
+  padding:11px 10px;
+  border-bottom:1px solid #ecece8;
+  text-align:left
+}
+th {
+  font-size:11px;
+  text-transform:uppercase;
+  color:#5f6468;
+  background:#f8f8f5;
+  position:sticky;
+  top:0
+}
+.pill {
+  display:inline-block;
+  background:var(--olive2);
+  color:#566b22;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:11px;
+  font-weight:700
+}
+.pill.warn {
+  background:#fff2be;
+  color:#715600
+}
+.muted {
+  color:var(--muted)
+}
+.empty {
+  color:#85898c;
+  font-size:14px;
+  margin-top:15px
+}
+.footer {
+  text-align:center;
+  font-size:11px;
+  color:#7c8185;
+  padding:28px 0 2px
+}
+.mobile-note {
+  display:none
+}
+
+.home-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}.office-tabs{display:flex;gap:8px;overflow:auto;padding:5px 0 14px;margin-top:12px}.office-btn{border:1px solid var(--olive);background:#fff;color:#39431f;padding:10px 14px;border-radius:8px;font-weight:800;white-space:nowrap;cursor:pointer}.office-btn.active{background:var(--olive);color:#fff}.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 14px}.mini-stat{background:#f8f8f5;border:1px solid var(--line);border-radius:11px;padding:12px}.mini-stat b{display:block;font-size:20px;margin-top:3px}.mini-stat span{font-size:11px;color:var(--muted);text-transform:uppercase;font-weight:800}.home-ranking{display:grid;gap:9px}.rank-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}.rank-name{font-weight:900}.rank-meta{font-size:12px;color:var(--muted);margin-top:3px}.rank-score{text-align:right}.rank-score b{font-size:19px;display:block;color:#bd8d00}.rank-score span{font-size:12px;color:var(--muted)}.rank-bar{grid-column:1/-1;height:6px;background:#ecece8;border-radius:999px;overflow:hidden}.rank-bar i{display:block;height:100%;background:var(--olive)}.quick-grid{display:grid;grid-template-columns:2fr 1fr auto;gap:12px;align-items:end}.quick-btn{border:0;background:var(--yellow);color:#2b2b24;font-weight:900;padding:13px 17px;border-radius:9px;cursor:pointer;min-height:43px}.quick-help{margin-top:10px}
+
+@media(max-width:980px) {
+  .grid4,.controls {
+    grid-template-columns:repeat(2,1fr)
+  }
+  
+}
+@media(max-width:680px) {
+  .home-stats{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:1fr}
+  .quick-btn{width:100%}
+  .rank-row{grid-template-columns:minmax(0,1fr) auto}
+
+  .hi {
+    padding:12px 14px
+  }
+  .wrap {
+    padding:12px 12px 28px
+  }
+  .logo {
+    font-size:10px
+  }
+  .logo b {
+    font-size:23px
+  }
+  .title h1 {
+    font-size:19px
+  }
+  .title p {
+    font-size:11px
+  }
+  .tabs {
+    margin:0 -2px
+  }
+  .tab {
+    padding:10px 11px;
+    font-size:13px
+  }
+  .grid4,.controls,.two,.result {
+    grid-template-columns:1fr
+  }
+  .panel {
+    padding:14px
+  }
+  .kpi {
+    padding:14px
+  }
+  .kpi .val {
+    font-size:26px
+  }
+  .score {
+    font-size:38px
+  }
+  .tablewrap th,.tablewrap td {
+    white-space:nowrap;
+    padding:9px 8px
+  }
+  .mobile-note {
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    margin-top:8px
+  }
+  
+}
+  </style>
+ </head>
+ <body>
+  <div class="topline">
+  </div>
+  <header class="header">
+   <div class="hi">
+    <div class="brand">
+     <div class="logo">
+      ELEIÇÕES
+      <b>
+       2026
+      </b>
+     </div>
+     <div class="title">
+      <h1>
+       Painel Eleitoral • Riachão do Dantas
+      </h1>
+      <p>
+       Zona 004 • dados dos boletins de urna enviados no site oficial.
+      </p>
+     </div>
+    </div>
+   </div>
+  </header>
+  <main class="wrap">
+   <nav class="tabs">
+    <button class="tab active" data-tab="resumo">
+     Resumo
+    </button>
+    <button class="tab" data-tab="consulta">
+     Consulta por candidato
+    </button>
+    <button class="tab" data-tab="locais">
+     Locais e seções
+    </button>
+    <button class="tab" data-tab="integridade">
+     Integridade
+    </button>
+   </nav>
+   <section class="section active" id="resumo">
+    <div class="grid4">
+     <div class="card kpi">
+      <div class="lab">Eleitores aptos</div>
+      <div class="val">17.752</div>
+      <div class="sub">cadastro eleitoral</div>
+     </div>
+     <div class="card kpi">
+      <div class="lab">Comparecimento</div>
+      <div class="val" id="homeComparecimento">—</div>
+      <div class="sub" id="homeComparecimentoPct">apurado nos BUs</div>
+     </div>
+     <div class="card kpi">
+      <div class="lab">Abstenções</div>
+      <div class="val" id="homeAbstencoes">—</div>
+      <div class="sub" id="homeAbstencoesPct">sobre eleitores aptos</div>
+     </div>
+     <div class="card kpi">
+      <div class="lab">Seções apuradas</div>
+      <div class="val">70/70</div>
+      <div class="sub">100% representadas nos BUs</div>
+     </div>
+    </div>
+
+    <div class="card panel home-results">
+     <div class="home-head">
+      <div>
+       <h2>Resultado do município</h2>
+       <div class="muted">Selecione um cargo para visualizar a votação consolidada de Riachão do Dantas.</div>
+      </div>
+     </div>
+     <div class="office-tabs" id="homeCargoTabs">
+      <button class="office-btn" data-office="PRESIDENTE">Presidente</button>
+      <button class="office-btn" data-office="GOVERNADOR">Governador</button>
+      <button class="office-btn" data-office="SENADOR">Senador</button>
+      <button class="office-btn" data-office="DEPUTADO FEDERAL">Dep. Federal</button>
+      <button class="office-btn active" data-office="DEPUTADO ESTADUAL">Dep. Estadual</button>
+     </div>
+     <div class="home-stats" id="homeStats"></div>
+     <div class="home-ranking" id="homeRanking"></div>
+    </div>
+
+    <div class="card panel quick-panel">
+     <h2>Consulta rápida por local de votação</h2>
+     <div class="quick-grid">
+      <div>
+       <label for="homeSchool">Local de votação</label>
+       <select id="homeSchool"><option value="">Selecione uma escola</option></select>
+      </div>
+      <div>
+       <label for="homeOffice">Cargo</label>
+       <select id="homeOffice">
+        <option>DEPUTADO ESTADUAL</option>
+        <option>DEPUTADO FEDERAL</option>
+        <option>GOVERNADOR</option>
+        <option>SENADOR</option>
+        <option>PRESIDENTE</option>
+       </select>
+      </div>
+      <button class="quick-btn" id="homeGo" type="button">Ver resultado do local</button>
+     </div>
+     <div class="muted quick-help">A consulta abre os resultados consolidados somente das seções pertencentes ao local escolhido.</div>
+    </div>
+   </section>
+   <section class="section" id="consulta">
+    <div class="card panel">
+     <h2>
+      Consulta por candidato
+     </h2>
+     <div class="notice" id="scopeNotice">
+      Dados obtidos dos boletins de urna enviados.
+     </div>
+     <div class="controls">
+      <div>
+       <label>
+        Cargo
+       </label>
+       <select id="cargo">
+        <option>
+         DEPUTADO ESTADUAL
+        </option>
+        <option>
+         DEPUTADO FEDERAL
+        </option>
+        <option>
+         GOVERNADOR
+        </option>
+        <option>
+         SENADOR
+        </option>
+        <option>
+         PRESIDENTE
+        </option>
+       </select>
+      </div>
+      <div>
+       <label>
+        Local de votação
+       </label>
+       <select id="school">
+        <option value="">
+         Todos os locais
+        </option>
+       </select>
+      </div>
+      <div>
+       <label>
+        Seção
+       </label>
+       <select id="section">
+        <option value="">
+         Todas as seções
+        </option>
+       </select>
+      </div>
+      <div>
+       <label>
+        Visão
+       </label>
+       <select id="view">
+        <option value="abs">
+         Votos absolutos
+        </option>
+        <option value="pct">
+         % dos votos válidos
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="two">
+      <div>
+       <label>
+        Número do candidato A
+       </label>
+       <input id="candA" inputmode="numeric" placeholder="Digite o número"/>
+       <div class="cand" id="cardA">
+        <div class="empty">
+         Digite o número para localizar o candidato.
+        </div>
+       </div>
+      </div>
+      <div>
+       <label>
+        Número do candidato B
+       </label>
+       <input id="candB" inputmode="numeric" placeholder="Digite o número"/>
+       <div class="cand" id="cardB">
+        <div class="empty">
+         Digite o número para localizar o candidato.
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="result">
+      <div class="scorebox">
+       <div class="muted" id="nameA">
+        Candidato A
+       </div>
+       <div class="score" id="scoreA">
+        —
+       </div>
+       <div class="pct" id="pctA">
+       </div>
+       <div class="bar">
+        <i id="barA">
+        </i>
+       </div>
+      </div>
+      <div class="scorebox">
+       <div class="muted" id="nameB">
+        Candidato B
+       </div>
+       <div class="score" id="scoreB">
+        —
+       </div>
+       <div class="pct" id="pctB">
+       </div>
+       <div class="bar">
+        <i id="barB">
+        </i>
+       </div>
+      </div>
+     </div>
+     <div class="meta" id="scopeMeta">
+     </div>
+     <div class="mobile-note">
+      No celular, os filtros e os resultados ficam empilhados para facilitar o toque e a leitura.
+     </div>
+    </div>
+   </section>
+   <section class="section" id="locais">
+    <div class="card panel">
+     <h2>
+      Locais de votação e seções identificadas
+     </h2>
+     <div class="tablewrap">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          Código
+         </th>
+         <th>
+          Local
+         </th>
+         <th>
+          Seções do local
+         </th>
+         <th>
+          Carregadas
+         </th>
+         <th>
+          Status
+         </th>
+        </tr>
+       </thead>
+       <tbody id="schoolTable">
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </section>
+   <section class="section" id="integridade">
+    <div class="card panel">
+     <h2>
+      Integridade do conjunto enviado
+     </h2>
+     <div class="tablewrap">
+      <table>
+       <tbody>
+        <tr>
+         <th>
+          Arquivos .dat recebidos
+         </th>
+         <td>
+          70
+         </td>
+        </tr>
+        <tr>
+         <th>
+          BUs únicos
+         </th>
+         <td>
+          69
+         </td>
+        </tr>
+        <tr>
+         <th>
+          Seções representadas
+         </th>
+         <td>
+          70
+         </td>
+        </tr>
+        <tr>
+         <th>
+          Agregação
+         </th>
+         <td>
+          Seção 236 agregada à seção 197
+         </td>
+        </tr>
+        <tr>
+         <th>
+          Local 1376
+         </th>
+         <td>
+          Seções 170, 197 e 236 (236 agregada à 197)
+         </td>
+        </tr>
+        <tr>
+         <th>
+          Locais cobertos
+         </th>
+         <td>
+          22 de 22
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </section>
+   <div class="footer">
+    Dados: Justiça Eleitoral • Desenvolvimento: Eduardo Fonseca • 2026
+Painel informativo independente. Não é um site oficial do TSE.
+   </div>
+  </main>
+  <script>
+   const CANDIDATES=[ {
+  "cargo":"DEPUTADO FEDERAL","numero":"7777","nome":"GIOVANNA ROCHA","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7711","nome":"LENE HALL","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"SENADOR","numero":"100","nome":"EDUARDO AMORIM","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"SENADOR","numero":"101","nome":"DELEGADO ANDRÉ DAVID","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2055","nome":"MARLEIDE SANTOS","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3688","nome":"IZABELA MORAIS","partido":"AGIR","partido_num":"36"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22345","nome":"GG LEANDRO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70231","nome":"ANDRIELY SOUZA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2277","nome":"DINÁ ALMEIDA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2200","nome":"LUIZÃO DONA TRAMPI","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2255","nome":"VITÓRIA PAULINE","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4004","nome":"BRENO GARIBALDE","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4011","nome":"ANGELA MIRANDA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4010","nome":"ELBER BATALHA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4056","nome":"ROBSON VIANA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"6555","nome":"DRA CATIA JUSTO","partido":"PCDOB","partido_num":"65"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1026","nome":"EMANUELLY HORA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2002","nome":"INGRID OLIVEIRA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2011","nome":"RITA DA SAÚDE","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2020","nome":"GILSON ELETRICISTA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2066","nome":"ANDRÉ SANTANA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1236","nome":"PASTORA TÂNIA","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1234","nome":"CAJU","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5513","nome":"ISABEL FERREIRA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7010","nome":"THANNATA DA EQUOTERAPIA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4500","nome":"TONY DOS AMBULANTES","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2333","nome":"DRA. JEANNE LIMA","partido":"CIDADANIA","partido_num":"23"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1400","nome":"RODRIGO SANTOS","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1444","nome":"JOÃO MARCELO","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1411","nome":"ENGENHEIRO ISAAC","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15222","nome":"GABRIEL TELES","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15192","nome":"GIVALDO GARÇÃO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15333","nome":"JEJÊ PRODUÇÕES","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15777","nome":"PROFESSOR LUCIANO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15190","nome":"DELEGADA DANIELLE","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40040","nome":"DR SARMENTO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10357","nome":"MARCOS ROCHA SEGURANÇA PRIVADA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10777","nome":"GEORGEO PASSOS","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10223","nome":"ROSA DE TEIÚ","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10123","nome":"BRENO SILVEIRA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10200","nome":"TIA GLEIDE","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10190","nome":"SARGENTO M. FILHO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44000","nome":"DRA LIDIANE LUCENA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11000","nome":"GIBRAN","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44744","nome":"PASTOR DIEGO","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11555","nome":"CRYS MOURA","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44333","nome":"GILSON DOS ANJOS","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20345","nome":"FÁTIMA BERNARDO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20012","nome":"PR. DANIEL OLIVEIRA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20222","nome":"JÚNIOR LIMA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55100","nome":"DIEGO SEO CHICO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"65555","nome":"PROFESSORA CLAUDICEIA","partido":"PCDOB","partido_num":"65"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13133","nome":"ZE NELSON","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13555","nome":"PADRE INALDO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20444","nome":"ALLYSON O SONHADOR","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"SENADOR","numero":"221","nome":"CORONEL ROCHA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"SENADOR","numero":"222","nome":"RODRIGO VALADARES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3666","nome":"FELIPE DE ROCHA","partido":"AGIR","partido_num":"36"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4013","nome":"TATHIANE ARAÚJO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4000","nome":"MARCOS SANTANA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3001","nome":"GRACE KELLY","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3024","nome":"EDILEUZA SÁ MELO","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"8000","nome":"MATEUS HENRIQUES","partido":"UP","partido_num":"80"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1311","nome":"JOAO DANIEL","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2077","nome":"SERGIO DA GRAÇAS","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1255","nome":"GALO MOTORISTA","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1210","nome":"BAGADAL","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5523","nome":"FLAVIO BRASIL","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7000","nome":"ALESSANDRA DA ONG PET AJU","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7070","nome":"CLAUDIO LUIS APRESENTADOR","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7079","nome":"JULIANA SILVA MÃE ATÍPICA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7077","nome":"TININHO ESTEVEZ","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2323","nome":"DR. ANDRE SOTERO","partido":"CIDADANIA","partido_num":"23"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1523","nome":"TATY CHAVES","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15555","nome":"ANTÔNIO BALA","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15111","nome":"DR. GILSON ANDRADE","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15130","nome":"ROSA REIS","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22322","nome":"BOLSONARO SERGIPANO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22002","nome":"MARA SIQUEIRA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22111","nome":"DELEGADO MARCELO PAES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22888","nome":"CLEVSON PROJETO BIKE ROUBADA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22000","nome":"TARCÍSIO DA NCT","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22022","nome":"BENÁRIA DE BOCÃO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40444","nome":"CESAR PRADO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40888","nome":"CLEDSON LIMA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"80800","nome":"GIOVANNI OLIVEIRA","partido":"UP","partido_num":"80"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70444","nome":"ANNE COUTO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70700","nome":"TACY QUEIROZ","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70170","nome":"GAGUINHA DE ILHÉUS","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70777","nome":"JÚNIOR DE DIOGENES","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10789","nome":"CATIA MODESTO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10013","nome":"LUCIANA DÉDA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10000","nome":"MARCOS OLIVEIRA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10010","nome":"PROFESSOR BONFIM","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10001","nome":"CRISTINA BRANDÃO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11333","nome":"LUCAS MENESES","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11111","nome":"ELI ACIOLE","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44444","nome":"CRISTIANO CAVALCANTE","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11777","nome":"HILDA RIBEIRO","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11222","nome":"VALDSON COSTA","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44321","nome":"MARCEL DA ENFERMAGEM","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20202","nome":"ZÉ MARQUES","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20333","nome":"ANITA SILVA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20123","nome":"PR. ZÉ CARLOS VIEIRA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20888","nome":"VALDSON","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55713","nome":"SANDRA CIGANINHA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55015","nome":"LUCIANO BISPO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55192","nome":"GIL DA SAÚDE","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13900","nome":"PROFESSOR DUDU","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5010","nome":"LÚCIA BARROSO","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50079","nome":"ANDRE LUCAS","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50180","nome":"LINDA BRASIL","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70888","nome":"CORONEL LINO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7700","nome":"SOARES PINTO","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4545","nome":"ACÁCIO CARDOSO","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4555","nome":"NATALI DA SAÚDE","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13800","nome":"MAURA DE BIBI","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2201","nome":"DELEGADO AUGUSTO CÉSAR","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3011","nome":"PROFESSOR GENILTON GÓIS","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3022","nome":"PROFESSOR EDUARDO PITBULL","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1313","nome":"MARCIO MACEDO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4313","nome":"EVERTON SOUZA","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1200","nome":"BEATRIZ ANDRADE","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5588","nome":"NETO BATALHA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2722","nome":"MARIA RAIMUNDA","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4588","nome":"TADEU TAXISTA","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1540","nome":"CHINA DA BORRACHARIA","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1510","nome":"PROFESSOR AYSLAN","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1555","nome":"PITUXO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15234","nome":"CLARISSA MARQUES","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22300","nome":"GISLANE FIGUEIREDO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22122","nome":"CORONEL FABIO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40400","nome":"KITTY LIMA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40345","nome":"DANIEL DO ESPORTE","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40123","nome":"ALAN DE MUNDINHO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10100","nome":"BETH DA SAÚDE","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44555","nome":"KAKÁ SANTOS","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20020","nome":"SÉRGIO SANTANA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20190","nome":"MARIANA SERVENTE","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55123","nome":"ADAILTON MARTINS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55111","nome":"MARCELL DE MAIM","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55000","nome":"ALICE CAROLINE","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"43000","nome":"IBRAIN DE VALMIR","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5050","nome":"DELEGADO MÁRIO LEONY","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50555","nome":"RICARDO RIBEIRO DA ENERGIA","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50333","nome":"GILDO DE BOQUIM","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7722","nome":"MOACIR DA AMBULÂNCIA","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15500","nome":"FÁBIO HENRIQUE","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3033","nome":"ALLAN MARQUES","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"GOVERNADOR","numero":"45","nome":"EMANUEL CACHO","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22300","nome":"PRIPRI DO POVO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2222","nome":"MOANA VALADARES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4015","nome":"MARCOS FRANCO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3030","nome":"MARIA CONCEIÇÃO","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1010","nome":"PASTOR HELENO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1000","nome":"ICARO DE VALMIR","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4400","nome":"ALEX PINTADO","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2090","nome":"SARGENTO SILVIO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7022","nome":"CORONEL MANO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2788","nome":"MARCOS ROMEU","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2727","nome":"IRMÃ MICHELI","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1593","nome":"MAJOR JAILSON","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1414","nome":"DAVI VALENÇA","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1441","nome":"LUIZ FERNANDO","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1404","nome":"DEYSY LIMA","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22200","nome":"FERNANDINHO FRANCO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22789","nome":"JOSIVALDO DA EQUOTERAPIA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22190","nome":"CORONEL PONTUAL","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22444","nome":"VF - VANILTON FRANCISCO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22822","nome":"JESSICA DE DONA VERA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40999","nome":"DA LUZ","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40333","nome":"ACACIA DO PORTO DANTAS","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40777","nome":"DRA LEYLA PAIXÃO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70870","nome":"VOVOZINHO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70999","nome":"MARCOS COUTO REPÓRTER","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70555","nome":"PRICILA CARVALHO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10666","nome":"NIVALDO DA BALA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10222","nome":"EDUARDO DO TÊNIS","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44222","nome":"PATO MARAVILHA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44177","nome":"VIVI DOCINHO","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20555","nome":"DRA. TERESA NEUMA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20120","nome":"JOEL FERNANDES CANTOR CAMELÔ","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20100","nome":"DRA LYLIAN","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55456","nome":"BRUNO  VASCONCELOS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13189","nome":"DR EMANUEL MATIAS","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13123","nome":"PROFESSOR CHICAO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"43123","nome":"BISPA WALTERCYA","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"43777","nome":"PAULO JR","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"SENADOR","numero":"500","nome":"IRAN BARBOSA","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5019","nome":"DR. EMERSON","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5013","nome":"IGOR BAIMA","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7733","nome":"GIVALDO SILVA","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7707","nome":"FABIANA SANTANA","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15700","nome":"MARILU","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40446","nome":"ROSÂNGELA DA BARRA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13777","nome":"EDSON JUNIOR","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2244","nome":"CELINHA SOBRAL","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"8080","nome":"BRUNA MAKIDA","partido":"UP","partido_num":"80"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5515","nome":"ANDERSON DE ZÉ DAS CANAS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5577","nome":"NITINHO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2772","nome":"TAMARA GARDENIA","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2789","nome":"GILMAR DA ESTÂNCIA","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15398","nome":"DONA ANNA","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15000","nome":"GARIBALDE","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22555","nome":"DRA. CATARINA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40100","nome":"VALÉRIA DA CABANA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70000","nome":"JUAREZ VETERINÁRIO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70370","nome":"PASTOR JADSON ALVES","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70123","nome":"EVERALDO VIEIRA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70500","nome":"KENO ALMEIDA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70270","nome":"VANUZA FILHA DE BOCA RICA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70079","nome":"DOUTOR WELLINGTON DO TEA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70333","nome":"NELSON ARAÚJO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70280","nome":"GUGU LIBERATO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70190","nome":"SGT ALEX LIMA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10111","nome":"ANA LUIZA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10122","nome":"PINHA MOTOS","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10079","nome":"DRA CÍCERA RENOVATTO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11079","nome":"FELIPE DUARTE","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44200","nome":"IRAÍLTON MATIAS","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11800","nome":"NIVALDA GONÇALVES","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20567","nome":"JÔ DO MOSQUEIRO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20999","nome":"DR. GILMÁRCIO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20002","nome":"CÁCIO JEORGE","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55888","nome":"ADROALDO ALVES","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55555","nome":"MAISA MITIDIERI","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13003","nome":"ANA PAULA","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13130","nome":"AUGUSTO CESAR","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13131","nome":"CANDISSE CARVALHO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5000","nome":"DAÍA","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"GOVERNADOR","numero":"10","nome":"VALMIR DE FRANCISQUINHO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"SENADOR","numero":"155","nome":"DELEGADO ALESSANDRO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"SENADOR","numero":"123","nome":"EDVALDO","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"SENADOR","numero":"270","nome":"PAULINHO DA UNIÃO TUR","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70888","nome":"ALEX DIAS DO SANTOS DUMONT","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2233","nome":"SARGENTO VIEIRA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4055","nome":"ROSANGELA SANTOS","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1333","nome":"MAFY DE YGOR GOMES","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1320","nome":"ANDRESA DE VALMIR","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1011","nome":"THIAGO DE JOALDO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1199","nome":"ANDRÉA CORAÇÃO VALENTE","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1112","nome":"FIOTE","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4420","nome":"SHEYLA GALBA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1111","nome":"LEVI OLIVEIRA","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2030","nome":"GENIVALDO CAMPOS","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1212","nome":"VAGNER GASTÃO","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1222","nome":"BRUNA TELES","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5555","nome":"FÁBIO REIS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5599","nome":"JULIANA VARGAS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5505","nome":"DELEGADA KATARINA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7090","nome":"CABO DIDI","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7007","nome":"JEFERSON VASCO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1577","nome":"ELIANA DA SOPA","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1499","nome":"KEL GUIMARÃES","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"GOVERNADOR","numero":"55","nome":"FÁBIO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"GOVERNADOR","numero":"27","nome":"TATY  CRISTINA DE JESUS","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15101","nome":"APOSTOLO JORGE","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15888","nome":"ENFERMEIRA VÂNIA","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15200","nome":"PASTOR MARCOS","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15300","nome":"IDALINO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22777","nome":"DRA RAYZA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22800","nome":"PASTOR ALEXANDRE","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22100","nome":"FLÁVIO DA DIREITA SERGIPANA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22333","nome":"SHEILA MATOS","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22007","nome":"PETER COSTA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40000","nome":"ZEZINHO SOBRAL","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40222","nome":"DELEGADO CLEVER FARIAS","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40555","nome":"NÚBIA LOPES","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40800","nome":"LUIZ SANTANA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70022","nome":"MESSIAS CAVALCANTE","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70570","nome":"FREI EDSON LUIZ","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10300","nome":"EUQUIAS CORREIA PASTORZÃO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10144","nome":"HALAERIO DO POVO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10456","nome":"GLEITON MEDEIROS","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11190","nome":"SGT NALDINHO","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44123","nome":"ANDERSON DE TUCA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44789","nome":"VAL SERRA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20192","nome":"ROBÉRIO BATISTA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20111","nome":"TIAGO RANGEL","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20200","nome":"ADALTO ARAGÃO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20199","nome":"ELTON DA ENFERMAGEM","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20456","nome":"SIMONE LINHARES","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55444","nome":"ENFERMEIRA GABRYELLA GARIBALDE","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55200","nome":"SAMIRA DAUD","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13111","nome":"PROFESSOR BISPO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"65123","nome":"FIRMO","partido":"PCDOB","partido_num":"65"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13333","nome":"CHICO DO CORREIO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"43456","nome":"SOUZA DA ENFERMAGEM","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50113","nome":"ATENILSON JOSÉ","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50500","nome":"PROFESSOR OTÁVIO SALES","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1177","nome":"GUSTINHO RIBEIRO","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"GOVERNADOR","numero":"22","nome":"RICARDO MARQUES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"SENADOR","numero":"131","nome":"ROGERIO CARVALHO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7766","nome":"GLEIDOALDO","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7755","nome":"SERGINHO MENDONÇA","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2244","nome":"NEO SOBRAL","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2777","nome":"GEL DE SERGIPE","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4510","nome":"MARQUINHOS FONTES","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22456","nome":"GABRIEL DÉDA","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2211","nome":"WELINGTON CAMARGO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4040","nome":"CLAUDIO MITIDIERI","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3000","nome":"TITÓ","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"6513","nome":"WALDIR RODRIGUES","partido":"PCDOB","partido_num":"65"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4343","nome":"AMANDA OLIVEIRA","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1390","nome":"PROFESSOR BENIZARIO","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1023","nome":"MISSIONÁRIA GISELE","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1133","nome":"GEDALVA UMBAUBÁ","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1211","nome":"NALLDO AMARO","partido":"PDT","partido_num":"12"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7055","nome":"TONINHO ARIMATEA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4577","nome":"CANTORA DEBORA CRISTIANE","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1477","nome":"JONMHARA","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22345","nome":"MÃE DINAH","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22222","nome":"CECILIA MARQUES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22221","nome":"PROFESSORA AVILETE","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22123","nome":"LUCIANO PIMENTEL","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40111","nome":"VENÂNCIO FONSECA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40600","nome":"NINA GOMES","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40192","nome":"MAGNA MOURA","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70180","nome":"ANDRÉA NASCIMENTO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70111","nome":"SIDNEY ROCHA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10700","nome":"TATIANE DA SEGURANÇA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10166","nome":"PROF. DAVID SOARES","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"11123","nome":"ENFERMEIRO MÁRCIO","partido":"PP","partido_num":"11"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44445","nome":"ROSA CARVALHO","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44777","nome":"NETINHO GUIMARÃES","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20000","nome":"JEFERSON SOUZA","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20019","nome":"MARCINHA DA SAÚDE","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20180","nome":"NICINHA CHAGAS","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55190","nome":"CORONEL RIBEIRO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55255","nome":"CARLINHOS FERREIRA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55999","nome":"SIDICLEI FONSECA","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"55777","nome":"JORGINHO ARAUJO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13600","nome":"LARISSA TRINDADE","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13773","nome":"APOSTOLA MARILEIDE","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"GOVERNADOR","numero":"50","nome":"DR. HELTON","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50000","nome":"SERGIO SAMPAIO","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50100","nome":"ESPAÇO QUILOMBOLA","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50631","nome":"EDER MATOS","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50123","nome":"PROFESSORA SÔNIA MEIRE","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"SENADOR","numero":"277","nome":"RENATINHA","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"SENADOR","numero":"444","nome":"ANDRÉ MOURA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"7788","nome":"VITORIA SIMÕES","partido":"SOLIDARIEDADE","partido_num":"77"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4055","nome":"DRA. TATI DE VAVÁ DO ALGODÃO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2022","nome":"PR. PAULO ROBERTO","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"2210","nome":"MENDONÇA PRADO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3013","nome":"RONADSON ALVES","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"3012","nome":"DEIVISSON DE JESUS","partido":"NOVO","partido_num":"30"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1077","nome":"DRA. CLÉCIA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1033","nome":"JORNALISTA SUSANE VIDAL","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1044","nome":"ALBERTO MACEDO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1012","nome":"GRACINHA GARCEZ","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4444","nome":"YANDRA MOURA","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4422","nome":"CAPITÃO SAMUEL","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"5511","nome":"DR MANUEL MARCOS","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"4522","nome":"ZOYA","partido":"PSDB","partido_num":"45"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1515","nome":"IRMÃ MABEL","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1500","nome":"SIL RIBEIRO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO FEDERAL","numero":"1533","nome":"PRISCILA CRUZ","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15999","nome":"PASTORA FÁBIA VALADARES","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15600","nome":"FILIPE DE DR. JOCELINO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15123","nome":"MARIANA DANTAS","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"15100","nome":"TIA CLÉO","partido":"MDB","partido_num":"15"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"22522","nome":"ITAMAR ALVES","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40300","nome":"FRANCISCO GUALBERTO","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"40789","nome":"LÉA SOBRAL","partido":"PSB","partido_num":"40"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"80123","nome":"ROSE DO MLB","partido":"UP","partido_num":"80"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70770","nome":"ALINE REZENDE","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70222","nome":"ZOMINHO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70789","nome":"TENENTE CORONEL MANUELA","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"70456","nome":"NORBERTO PINTO","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10333","nome":"MATHEUS CORRÊA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10999","nome":"WENDELL OLIVEIRA","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"10888","nome":"NEGO DO MATUTO","partido":"REPUBLICANOS","partido_num":"10"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44111","nome":"MARCELO SOBRAL","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"44044","nome":"LAYSE SANTIAGO","partido":"UNIÃO","partido_num":"44"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"20777","nome":"DR SANDRO ANDRÉ","partido":"PODE","partido_num":"20"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"13000","nome":"CAMILO DANIEL","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"43333","nome":"MARIA PEDRITA","partido":"PV","partido_num":"43"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50121","nome":"VANESSA DO POVO","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"DEPUTADO ESTADUAL","numero":"50777","nome":"MARIA SALVADOR","partido":"PSOL","partido_num":"50"
+}, {
+  "cargo":"PRESIDENTE","numero":"80","nome":"SAMARA","partido":"UP","partido_num":"80"
+}, {
+  "cargo":"PRESIDENTE","numero":"16","nome":"HERTZ DIAS","partido":"PSTU","partido_num":"16"
+}, {
+  "cargo":"PRESIDENTE","numero":"29","nome":"RUI COSTA PIMENTA","partido":"PCO","partido_num":"29"
+}, {
+  "cargo":"PRESIDENTE","numero":"28","nome":"LEONARDO AVALANCHE","partido":"PRTB","partido_num":"28"
+}, {
+  "cargo":"PRESIDENTE","numero":"14","nome":"RENAN SANTOS","partido":"MISSÃO","partido_num":"14"
+}, {
+  "cargo":"PRESIDENTE","numero":"55","nome":"RONALDO CAIADO","partido":"PSD","partido_num":"55"
+}, {
+  "cargo":"PRESIDENTE","numero":"70","nome":"ESCRITOR AUGUSTO CURY","partido":"AVANTE","partido_num":"70"
+}, {
+  "cargo":"PRESIDENTE","numero":"13","nome":"LULA","partido":"PT","partido_num":"13"
+}, {
+  "cargo":"PRESIDENTE","numero":"27","nome":"CLARIANA BARAO","partido":"DC","partido_num":"27"
+}, {
+  "cargo":"PRESIDENTE","numero":"28","nome":"PABLO MARÇAL","partido":"PRTB","partido_num":"28"
+}, {
+  "cargo":"PRESIDENTE","numero":"35","nome":"VETERINÁRIO WILSON GRASSI","partido":"DEMOCRATA","partido_num":"35"
+}, {
+  "cargo":"PRESIDENTE","numero":"21","nome":"EDMILSON COSTA","partido":"PCB","partido_num":"21"
+}, {
+  "cargo":"PRESIDENTE","numero":"22","nome":"FLAVIO BOLSONARO","partido":"PL","partido_num":"22"
+}, {
+  "cargo":"PRESIDENTE","numero":"30","nome":"ZEMA","partido":"NOVO","partido_num":"30"
+}];
+const SCHOOLS=[ {
+  "codigo":"1023","nome":"COLÉGIO ESTADUAL LOURIVAL FONTES","qtd_secoes":8,"aptos":2135,"secoes":[59,60,61,62,63,64,65,66],"carregadas":8,"faltantes":0
+}, {
+  "codigo":"1066","nome":"ESCOLA MUNICIPAL NOSSA SENHORA DO CARMO","qtd_secoes":3,"aptos":772,"secoes":[76,77,98],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1074","nome":"COLÉGIO ESTADUAL NAPOLEÃO DE MENEZES ALVES (ANT ANTÔNIO FONTES FREITAS)","qtd_secoes":6,"aptos":1665,"secoes":[79,80,81,82,83,84],"carregadas":6,"faltantes":0
+}, {
+  "codigo":"1090","nome":"ESCOLA MUNICIPAL SANTO ANTONIO DE PADUA","qtd_secoes":4,"aptos":1097,"secoes":[101,119,166,212],"carregadas":4,"faltantes":0
+}, {
+  "codigo":"1139","nome":"ESCOLA MUNICIPAL MARIANA FONTES COSTA","qtd_secoes":3,"aptos":746,"secoes":[111,142,226],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1155","nome":"ESCOLA MUNICIPAL JOAO CARLOS DA FONSECA MELO","qtd_secoes":3,"aptos":962,"secoes":[133,148,207],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1163","nome":"ESCOLA MUNICIPAL ALZIRA MARIA DE LISBOA","qtd_secoes":2,"aptos":399,"secoes":[134,211],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1201","nome":"ESCOLA MUNICIPAL URSINO SOUZA RAMOS","qtd_secoes":3,"aptos":820,"secoes":[137,185,219],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1210","nome":"ESCOLA MUNICIPAL NOSSA SENHORA DE FATIMA","qtd_secoes":2,"aptos":415,"secoes":[138,206],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1228","nome":"ESCOLA MUNICIPAL ABDIAS DE OLIVEIRA","qtd_secoes":3,"aptos":659,"secoes":[144,173,218],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1236","nome":"ESCOLA MUNICIPAL MAXIMIANO JOSE DOS SANTOS","qtd_secoes":3,"aptos":830,"secoes":[151,165,209],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1252","nome":"COLÉGIO ESTADUAL DR. OSMAN HORA FONTES (E.M.LUIZ ANTÔNIO BARRETO)","qtd_secoes":7,"aptos":1413,"secoes":[58,67,70,86,91,99,106],"carregadas":7,"faltantes":0
+}, {
+  "codigo":"1279","nome":"ESCOLA MUNICIPAL ANTONIO MARCELO","qtd_secoes":2,"aptos":550,"secoes":[145,164],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1287","nome":"ESCOLA MUNICIPAL PADRE EZAU BARBOSA DE SOUZA","qtd_secoes":4,"aptos":988,"secoes":[112,147,161,235],"carregadas":4,"faltantes":0
+}, {
+  "codigo":"1295","nome":"ESCOLA MUNICIPAL JORNALISTA VALERIANO FELIX DOS SANTOS","qtd_secoes":2,"aptos":406,"secoes":[168,201],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1309","nome":"ESCOLA MUNICIPAL JOAO SIMOES FREIRE","qtd_secoes":1,"aptos":289,"secoes":[169],"carregadas":1,"faltantes":0
+}, {
+  "codigo":"1317","nome":"ESCOLA MUNICIPAL SANTA CRUZ","qtd_secoes":2,"aptos":421,"secoes":[183,205],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1333","nome":"ESCOLA MUNICIPAL MARIA LÚCIA DANTAS","qtd_secoes":4,"aptos":1026,"secoes":[73,74,75,97],"carregadas":4,"faltantes":0
+}, {
+  "codigo":"1341","nome":"ESCOLA MUNICIPAL DR. JOSÉ ARTÊMIO BARRETO","qtd_secoes":2,"aptos":619,"secoes":[132,162],"carregadas":2,"faltantes":0
+}, {
+  "codigo":"1368","nome":"ESCOLA MUNICIPAL ANTÔNIO MANOEL DE CARVALHO DANTAS","qtd_secoes":1,"aptos":258,"secoes":[199],"carregadas":1,"faltantes":0
+}, {
+  "codigo":"1376","nome":"ESCOLA MUNICIPAL PROFESSORA MARIA ANETE","qtd_secoes":3,"aptos":739,"secoes":[170,197,236],"carregadas":3,"faltantes":0
+}, {
+  "codigo":"1384","nome":"ESCOLA MUNICIPAL MARIETA SILVEIRA FONTES (D. MARIETA)","qtd_secoes":2,"aptos":543,"secoes":[68,71],"carregadas":2,"faltantes":0
+}];
+const DATA=[ {
+  "secao":58,"local":1252,"comparecimento":176,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":123,"14":2,"22":35,"55":6,"70":5
+      },"brancos":0,"nulos":5,"legenda":0,"validos":171,"comparecimento":176
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":33,"1026":2,"1033":2,"1111":1,"1112":3,"1177":53,"1311":9,"1313":1,"1320":1,"1333":2,"1390":1,"1414":1,"2222":3,"2233":2,"4000":5,"4040":4,"4056":1,"4444":2,"5505":1,"5515":1,"5555":31
+      },"brancos":4,"nulos":8,"legenda":4,"validos":164,"comparecimento":176
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":9,"10333":2,"11777":15,"13000":3,"13555":1,"13900":2,"15111":1,"15234":2,"22123":2,"22200":4,"22222":2,"40000":8,"40111":1,"40222":13,"43000":8,"43777":9,"44000":12,"44111":1,"44444":1,"44777":2,"50180":1,"55015":1,"55111":2,"55190":6,"55255":2,"55555":33,"55777":5,"70333":3,"70456":1,"70555":1
+      },"brancos":6,"nulos":9,"legenda":8,"validos":161,"comparecimento":176
+    },"SENADOR": {
+      "votos": {
+        "100":36,"101":30,"123":37,"131":83,"155":36,"221":1,"222":13,"444":49,"500":8
+      },"brancos":17,"nulos":42,"legenda":0,"validos":293,"comparecimento":176
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":2,"27":1,"50":4,"55":91
+      },"brancos":6,"nulos":16,"legenda":0,"validos":154,"comparecimento":176
+    }
+  }
+}, {
+  "secao":59,"local":1023,"comparecimento":232,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":155,"22":58,"55":1,"70":7
+      },"brancos":6,"nulos":5,"legenda":0,"validos":221,"comparecimento":232
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1011":29,"1026":2,"1033":2,"1111":2,"1112":1,"1177":70,"1311":15,"1313":8,"2200":4,"2222":2,"4000":1,"4040":3,"4313":1,"4422":1,"4444":7,"5505":4,"5515":3,"5555":40,"5588":2,"7007":1
+      },"brancos":10,"nulos":11,"legenda":8,"validos":211,"comparecimento":232
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":13,"10200":1,"10300":1,"10333":2,"11000":1,"11777":28,"13000":2,"13131":1,"13555":2,"13900":1,"15111":3,"15500":1,"20111":2,"22100":1,"22123":3,"22200":5,"22789":1,"40000":15,"40111":1,"40222":6,"40300":1,"40400":1,"40800":1,"43000":7,"43777":6,"44000":11,"44111":1,"44123":1,"44222":1,"44444":2,"44555":4,"44777":1,"50123":2,"50180":3,"50500":1,"55000":1,"55015":9,"55111":2,"55190":2,"55255":4,"55555":41,"55777":16,"55999":2,"70333":1,"70777":1
+      },"brancos":5,"nulos":8,"legenda":6,"validos":219,"comparecimento":232
+    },"SENADOR": {
+      "votos": {
+        "100":49,"101":41,"123":46,"131":114,"155":40,"221":2,"222":14,"444":82,"500":11
+      },"brancos":29,"nulos":36,"legenda":0,"validos":399,"comparecimento":232
+    },"GOVERNADOR": {
+      "votos": {
+        "10":71,"22":3,"50":8,"55":120
+      },"brancos":11,"nulos":19,"legenda":0,"validos":202,"comparecimento":232
+    }
+  }
+}, {
+  "secao":60,"local":1023,"comparecimento":222,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":146,"14":1,"22":55,"55":5,"70":5,"80":1
+      },"brancos":4,"nulos":5,"legenda":0,"validos":213,"comparecimento":222
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":9,"1011":24,"1012":1,"1033":2,"1111":5,"1177":64,"1234":1,"1311":18,"1313":7,"2200":5,"2222":2,"4000":2,"4004":1,"4040":4,"4422":1,"4444":11,"5013":1,"5505":5,"5515":3,"5555":31,"5577":1,"5588":3
+      },"brancos":7,"nulos":7,"legenda":7,"validos":208,"comparecimento":222
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":6,"10200":1,"10300":1,"10333":6,"11000":1,"11777":27,"13000":6,"13133":1,"13555":3,"13900":1,"15111":1,"15190":1,"20111":1,"22123":5,"22200":8,"40000":12,"40222":16,"40400":2,"43000":2,"43777":10,"44000":13,"44333":1,"44555":3,"44777":1,"50123":1,"50180":2,"55000":1,"55015":2,"55190":4,"55255":6,"55555":40,"55777":7,"55999":2,"65555":1,"70333":2,"70456":1,"70777":1
+      },"brancos":8,"nulos":4,"legenda":10,"validos":210,"comparecimento":222
+    },"SENADOR": {
+      "votos": {
+        "100":39,"101":43,"123":41,"131":99,"155":44,"221":5,"222":15,"277":1,"444":73,"500":7
+      },"brancos":31,"nulos":46,"legenda":0,"validos":367,"comparecimento":222
+    },"GOVERNADOR": {
+      "votos": {
+        "10":68,"22":2,"27":1,"50":8,"55":118
+      },"brancos":7,"nulos":18,"legenda":0,"validos":197,"comparecimento":222
+    }
+  }
+}, {
+  "secao":61,"local":1023,"comparecimento":228,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":161,"14":2,"22":44,"55":3,"70":4
+      },"brancos":4,"nulos":10,"legenda":0,"validos":214,"comparecimento":228
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":3,"1011":32,"1023":2,"1026":1,"1033":1,"1077":1,"1111":8,"1112":1,"1177":74,"1211":1,"1311":16,"1313":3,"1320":1,"1523":1,"2011":1,"2200":3,"4000":1,"4013":1,"4040":7,"4056":1,"4400":2,"4422":1,"4444":5,"5505":3,"5515":3,"5555":29,"5588":1,"7007":1
+      },"brancos":11,"nulos":4,"legenda":9,"validos":213,"comparecimento":228
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":7,"10200":3,"10333":4,"10777":1,"11000":1,"11777":29,"13000":2,"13131":2,"13555":2,"13900":1,"15000":1,"15111":2,"15190":1,"20111":3,"22123":2,"40000":7,"40222":15,"43000":4,"43777":8,"44000":14,"44123":1,"44321":1,"44555":2,"55015":5,"55100":1,"55190":3,"55255":4,"55555":52,"55777":9,"55999":2,"70456":1,"70777":3
+      },"brancos":14,"nulos":9,"legenda":12,"validos":205,"comparecimento":228
+    },"SENADOR": {
+      "votos": {
+        "100":27,"101":30,"123":40,"131":111,"155":45,"221":1,"222":9,"444":90,"500":7
+      },"brancos":50,"nulos":46,"legenda":0,"validos":360,"comparecimento":228
+    },"GOVERNADOR": {
+      "votos": {
+        "10":62,"22":1,"50":3,"55":129
+      },"brancos":8,"nulos":25,"legenda":0,"validos":195,"comparecimento":228
+    }
+  }
+}, {
+  "secao":62,"local":1023,"comparecimento":222,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":161,"14":2,"22":43,"55":2,"70":4
+      },"brancos":2,"nulos":8,"legenda":0,"validos":212,"comparecimento":222
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1011":25,"1026":1,"1033":2,"1044":1,"1111":4,"1112":1,"1177":71,"1311":14,"1313":7,"1320":1,"1390":2,"1500":2,"2200":2,"2222":1,"4000":1,"4010":1,"4013":2,"4040":7,"4400":1,"4422":1,"4444":8,"5505":3,"5515":2,"5555":42,"7007":1
+      },"brancos":6,"nulos":4,"legenda":4,"validos":212,"comparecimento":222
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10001":1,"10111":7,"10200":3,"10333":6,"10777":2,"11777":30,"13000":5,"13131":1,"13133":1,"13900":2,"15111":5,"15190":1,"15777":1,"20111":4,"22100":1,"22123":2,"22200":1,"40000":9,"40111":2,"40222":12,"40400":1,"43000":9,"43777":10,"44000":12,"44123":2,"44321":1,"44555":4,"44777":1,"50123":1,"50180":1,"50500":2,"55015":6,"55123":1,"55190":2,"55255":3,"55555":37,"55777":12,"55999":3,"70333":1
+      },"brancos":5,"nulos":8,"legenda":4,"validos":209,"comparecimento":222
+    },"SENADOR": {
+      "votos": {
+        "100":41,"101":38,"123":45,"131":124,"155":48,"221":2,"222":9,"444":64,"500":11
+      },"brancos":22,"nulos":40,"legenda":0,"validos":382,"comparecimento":222
+    },"GOVERNADOR": {
+      "votos": {
+        "10":63,"22":4,"50":3,"55":131
+      },"brancos":6,"nulos":15,"legenda":0,"validos":201,"comparecimento":222
+    }
+  }
+}, {
+  "secao":63,"local":1023,"comparecimento":236,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":172,"14":2,"22":43,"55":2,"70":2
+      },"brancos":4,"nulos":11,"legenda":0,"validos":221,"comparecimento":236
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":20,"1023":1,"1033":6,"1111":2,"1177":74,"1311":16,"1313":3,"2200":5,"2222":2,"4000":1,"4040":2,"4400":1,"4422":3,"4444":7,"5505":5,"5515":3,"5555":48,"5588":2
+      },"brancos":15,"nulos":14,"legenda":5,"validos":207,"comparecimento":236
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":10,"10200":1,"10300":1,"10333":5,"11222":1,"11777":22,"13000":3,"13111":1,"13555":4,"13900":3,"15000":1,"15111":2,"20111":4,"22123":6,"22200":6,"22222":1,"22789":1,"40000":7,"40111":3,"40123":1,"40222":18,"43000":9,"43777":8,"44000":9,"44111":1,"44222":1,"44333":1,"44555":5,"44777":2,"50123":1,"50180":1,"55015":8,"55111":3,"55123":1,"55190":4,"55255":3,"55555":37,"55777":7,"55999":3,"70123":1,"70456":3,"70999":1
+      },"brancos":7,"nulos":10,"legenda":9,"validos":219,"comparecimento":236
+    },"SENADOR": {
+      "votos": {
+        "100":31,"101":38,"123":63,"131":102,"155":40,"221":2,"222":10,"444":72,"500":6
+      },"brancos":42,"nulos":66,"legenda":0,"validos":364,"comparecimento":236
+    },"GOVERNADOR": {
+      "votos": {
+        "10":70,"22":2,"50":2,"55":133
+      },"brancos":10,"nulos":19,"legenda":0,"validos":207,"comparecimento":236
+    }
+  }
+}, {
+  "secao":64,"local":1023,"comparecimento":217,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":150,"14":4,"22":51,"55":1,"70":5
+      },"brancos":1,"nulos":5,"legenda":0,"validos":211,"comparecimento":217
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":7,"1010":1,"1011":22,"1023":1,"1033":1,"1111":5,"1177":76,"1311":21,"2200":5,"2222":1,"4000":1,"4040":5,"4422":5,"4444":4,"5505":2,"5515":3,"5555":30,"5577":2,"5588":3,"7777":1
+      },"brancos":7,"nulos":6,"legenda":8,"validos":204,"comparecimento":217
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"10200":1,"10300":3,"10333":2,"10777":3,"11000":1,"11222":1,"11777":33,"13000":4,"13555":5,"13900":1,"15111":3,"15190":1,"15500":1,"15555":1,"20111":4,"20555":1,"22100":2,"22123":4,"22200":2,"22789":1,"40000":7,"40222":10,"40300":1,"43000":6,"43777":7,"44000":16,"44111":1,"44222":1,"44555":4,"50180":1,"55015":6,"55190":3,"55255":5,"55555":36,"55777":5,"55999":1,"70333":1,"70456":2
+      },"brancos":8,"nulos":10,"legenda":11,"validos":199,"comparecimento":217
+    },"SENADOR": {
+      "votos": {
+        "100":31,"101":43,"123":45,"131":91,"155":43,"221":5,"222":24,"444":64,"500":9
+      },"brancos":37,"nulos":42,"legenda":0,"validos":355,"comparecimento":217
+    },"GOVERNADOR": {
+      "votos": {
+        "10":64,"22":4,"50":5,"55":128
+      },"brancos":5,"nulos":11,"legenda":0,"validos":201,"comparecimento":217
+    }
+  }
+}, {
+  "secao":65,"local":1023,"comparecimento":230,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":157,"14":3,"22":55,"30":1,"55":2,"70":3
+      },"brancos":2,"nulos":7,"legenda":0,"validos":221,"comparecimento":230
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1011":33,"1111":6,"1112":1,"1177":52,"1311":16,"1313":3,"1390":2,"2200":4,"2222":7,"2233":1,"3030":1,"4000":1,"4004":2,"4015":2,"4040":5,"4422":4,"4444":4,"5010":1,"5505":2,"5515":1,"5555":35,"5588":2,"7090":1
+      },"brancos":18,"nulos":12,"legenda":10,"validos":200,"comparecimento":230
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":10,"10200":1,"10300":1,"10333":4,"11777":22,"13000":6,"13131":1,"13555":2,"15111":3,"15500":1,"15555":1,"20111":2,"22100":2,"22200":2,"22222":3,"22789":3,"40000":9,"40111":1,"40222":9,"40555":1,"43000":7,"43777":6,"44000":13,"44111":2,"44222":1,"44555":4,"44777":4,"50180":5,"50500":1,"55015":3,"55111":1,"55123":1,"55190":3,"55255":3,"55555":34,"55777":10,"70333":2,"70444":1,"70456":7,"70777":1
+      },"brancos":14,"nulos":10,"legenda":12,"validos":206,"comparecimento":230
+    },"SENADOR": {
+      "votos": {
+        "100":42,"101":47,"123":41,"131":84,"155":47,"221":4,"222":18,"277":1,"444":65,"500":9
+      },"brancos":56,"nulos":46,"legenda":0,"validos":358,"comparecimento":230
+    },"GOVERNADOR": {
+      "votos": {
+        "10":84,"22":5,"50":3,"55":109
+      },"brancos":12,"nulos":17,"legenda":0,"validos":201,"comparecimento":230
+    }
+  }
+}, {
+  "secao":66,"local":1023,"comparecimento":235,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":156,"14":3,"22":61,"55":1,"70":1,"80":1
+      },"brancos":3,"nulos":9,"legenda":0,"validos":223,"comparecimento":235
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1011":26,"1033":2,"1111":6,"1133":1,"1177":60,"1211":1,"1311":15,"1313":11,"1320":2,"1390":1,"1555":1,"2200":9,"2222":1,"2277":1,"4000":2,"4004":1,"4015":1,"4040":5,"4422":2,"4444":9,"5050":1,"5505":3,"5515":4,"5555":38,"5588":2
+      },"brancos":11,"nulos":11,"legenda":4,"validos":213,"comparecimento":235
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":10,"10333":8,"10777":2,"11111":2,"11777":20,"13000":5,"13131":1,"13133":1,"13555":7,"15000":1,"20111":2,"22100":1,"22123":5,"22200":2,"22222":1,"40000":5,"40111":1,"40222":7,"40400":1,"43000":8,"43777":12,"44000":12,"44111":1,"44333":1,"44444":2,"44555":2,"44777":1,"50123":1,"50180":4,"50500":1,"55015":5,"55190":5,"55255":4,"55555":33,"55777":16,"55999":3,"70333":1,"70456":3,"70777":2
+      },"brancos":14,"nulos":10,"legenda":11,"validos":211,"comparecimento":235
+    },"SENADOR": {
+      "votos": {
+        "100":43,"101":42,"123":46,"131":97,"155":46,"221":6,"222":17,"277":1,"444":68,"500":13
+      },"brancos":36,"nulos":55,"legenda":0,"validos":379,"comparecimento":235
+    },"GOVERNADOR": {
+      "votos": {
+        "10":74,"22":3,"50":4,"55":121
+      },"brancos":10,"nulos":23,"legenda":0,"validos":202,"comparecimento":235
+    }
+  }
+}, {
+  "secao":67,"local":1252,"comparecimento":173,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":116,"14":2,"22":40,"29":1,"70":5
+      },"brancos":1,"nulos":8,"legenda":0,"validos":164,"comparecimento":173
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":3,"1011":27,"1026":1,"1077":1,"1111":3,"1177":54,"1311":14,"1313":4,"1390":2,"1577":1,"2200":2,"4000":3,"4004":1,"4010":1,"4040":1,"4422":2,"4444":4,"5505":2,"5515":1,"5555":27,"5588":1,"7000":1
+      },"brancos":5,"nulos":6,"legenda":6,"validos":162,"comparecimento":173
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":6,"10200":1,"10333":6,"10777":1,"11222":1,"11777":24,"13000":3,"13555":2,"13900":2,"15111":1,"22123":5,"22200":2,"22222":1,"22789":1,"22800":1,"40000":6,"40222":11,"40444":1,"43000":4,"43777":8,"44000":10,"44321":2,"44444":1,"44555":2,"50180":1,"55015":6,"55111":1,"55190":2,"55255":4,"55555":22,"55777":9,"55888":1,"55999":1,"70333":2,"70456":2
+      },"brancos":4,"nulos":7,"legenda":9,"validos":162,"comparecimento":173
+    },"SENADOR": {
+      "votos": {
+        "100":27,"101":32,"123":31,"131":76,"155":45,"221":2,"222":10,"444":51,"500":7
+      },"brancos":18,"nulos":47,"legenda":0,"validos":281,"comparecimento":173
+    },"GOVERNADOR": {
+      "votos": {
+        "10":60,"22":3,"50":3,"55":86
+      },"brancos":4,"nulos":17,"legenda":0,"validos":152,"comparecimento":173
+    }
+  }
+}, {
+  "secao":68,"local":1384,"comparecimento":217,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":159,"22":36,"55":7,"70":5
+      },"brancos":3,"nulos":7,"legenda":0,"validos":207,"comparecimento":217
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":7,"1011":31,"1033":1,"1111":2,"1177":60,"1234":1,"1311":12,"1313":3,"1320":1,"1333":1,"1390":1,"1533":1,"2200":2,"2222":1,"4000":2,"4040":7,"4056":2,"4422":1,"4444":9,"5505":3,"5555":38,"5588":1,"7777":1
+      },"brancos":8,"nulos":11,"legenda":10,"validos":198,"comparecimento":217
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":9,"10200":1,"10333":3,"11777":22,"13000":1,"13555":5,"13900":3,"15111":4,"15500":1,"22100":1,"22123":3,"22200":2,"22222":1,"40000":10,"40222":6,"40400":1,"43000":4,"43777":10,"44000":17,"44333":1,"44555":2,"44777":2,"50180":1,"55015":5,"55111":2,"55123":1,"55190":2,"55255":3,"55555":41,"55777":13,"55999":1,"70333":4,"70456":3,"70777":1
+      },"brancos":7,"nulos":14,"legenda":9,"validos":196,"comparecimento":217
+    },"SENADOR": {
+      "votos": {
+        "100":43,"101":34,"123":60,"131":95,"155":34,"221":4,"222":12,"444":63,"500":7
+      },"brancos":12,"nulos":70,"legenda":0,"validos":352,"comparecimento":217
+    },"GOVERNADOR": {
+      "votos": {
+        "10":62,"22":2,"45":1,"50":1,"55":120
+      },"brancos":8,"nulos":23,"legenda":0,"validos":186,"comparecimento":217
+    }
+  }
+}, {
+  "secao":70,"local":1252,"comparecimento":171,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":115,"14":1,"22":42,"55":1,"70":6
+      },"brancos":0,"nulos":6,"legenda":0,"validos":165,"comparecimento":171
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":22,"1026":2,"1033":2,"1111":5,"1112":1,"1177":48,"1311":8,"1313":4,"1390":1,"1414":1,"2200":1,"2201":1,"2222":2,"2233":1,"4004":2,"4010":1,"4040":7,"4056":1,"4400":1,"4444":3,"5505":2,"5555":32,"5577":1,"5588":2
+      },"brancos":6,"nulos":9,"legenda":4,"validos":156,"comparecimento":171
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":2,"10333":8,"10777":1,"11111":1,"11777":16,"13000":2,"13555":2,"13900":1,"15111":1,"15500":1,"15555":1,"20111":2,"22100":1,"22123":2,"22200":3,"22789":1,"40000":6,"40111":1,"40222":11,"40777":1,"43000":7,"43777":6,"44000":14,"44333":1,"44555":2,"44744":1,"50123":1,"50180":2,"55015":9,"55111":3,"55190":2,"55255":2,"55555":25,"55777":4,"70333":1,"70456":3
+      },"brancos":5,"nulos":7,"legenda":11,"validos":159,"comparecimento":171
+    },"SENADOR": {
+      "votos": {
+        "100":35,"101":34,"123":40,"131":68,"155":35,"221":5,"222":16,"444":48,"500":4
+      },"brancos":17,"nulos":40,"legenda":0,"validos":285,"comparecimento":171
+    },"GOVERNADOR": {
+      "votos": {
+        "10":52,"22":3,"50":3,"55":91
+      },"brancos":4,"nulos":18,"legenda":0,"validos":149,"comparecimento":171
+    }
+  }
+}, {
+  "secao":71,"local":1384,"comparecimento":240,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":169,"22":46,"55":5,"70":7
+      },"brancos":4,"nulos":9,"legenda":0,"validos":227,"comparecimento":240
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":6,"1011":44,"1026":1,"1033":1,"1111":6,"1112":1,"1177":68,"1311":17,"1313":3,"1390":2,"2200":3,"2222":4,"4000":2,"4010":1,"4013":3,"4040":5,"4422":1,"4444":8,"4522":1,"5505":3,"5515":1,"5555":28,"5588":2
+      },"brancos":16,"nulos":9,"legenda":4,"validos":215,"comparecimento":240
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":13,"10200":2,"10300":1,"10333":4,"10999":1,"11222":1,"11777":24,"13000":3,"13555":7,"13900":1,"15111":4,"15190":2,"20111":2,"22100":2,"22123":1,"22200":3,"22222":1,"22522":1,"22789":1,"40000":3,"40111":2,"40222":11,"40400":1,"43000":8,"43777":8,"44000":16,"44111":1,"44123":1,"44222":2,"44444":1,"44555":5,"44777":1,"50180":1,"55015":3,"55111":1,"55190":3,"55255":3,"55555":43,"55777":7,"70456":2
+      },"brancos":14,"nulos":13,"legenda":16,"validos":213,"comparecimento":240
+    },"SENADOR": {
+      "votos": {
+        "100":37,"101":47,"123":44,"131":105,"155":40,"221":2,"222":19,"444":81,"500":7
+      },"brancos":43,"nulos":55,"legenda":0,"validos":382,"comparecimento":240
+    },"GOVERNADOR": {
+      "votos": {
+        "10":73,"22":2,"45":1,"50":1,"55":127
+      },"brancos":16,"nulos":20,"legenda":0,"validos":204,"comparecimento":240
+    }
+  }
+}, {
+  "secao":73,"local":1333,"comparecimento":201,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":120,"22":58,"55":4,"70":3
+      },"brancos":6,"nulos":10,"legenda":0,"validos":185,"comparecimento":201
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":12,"1011":2,"1026":1,"1111":9,"1177":83,"1311":10,"1313":2,"2200":1,"2222":2,"2277":4,"4015":2,"4040":2,"4588":1,"5505":8,"5515":1,"5555":36,"7000":1
+      },"brancos":10,"nulos":6,"legenda":8,"validos":185,"comparecimento":201
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10333":2,"11777":33,"13000":2,"13900":3,"40000":2,"40123":1,"40222":1,"43000":16,"43777":2,"44555":7,"44777":4,"50180":1,"55015":20,"55190":4,"55255":5,"55555":49,"55777":6,"70000":1,"70456":7,"70777":7
+      },"brancos":9,"nulos":7,"legenda":12,"validos":185,"comparecimento":201
+    },"SENADOR": {
+      "votos": {
+        "100":31,"101":21,"123":19,"131":85,"155":49,"221":7,"222":13,"444":89,"500":2
+      },"brancos":33,"nulos":53,"legenda":0,"validos":316,"comparecimento":201
+    },"GOVERNADOR": {
+      "votos": {
+        "10":52,"22":1,"45":1,"50":3,"55":120
+      },"brancos":10,"nulos":14,"legenda":0,"validos":177,"comparecimento":201
+    }
+  }
+}, {
+  "secao":74,"local":1333,"comparecimento":198,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":124,"22":48,"55":5,"70":5
+      },"brancos":3,"nulos":13,"legenda":0,"validos":182,"comparecimento":198
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":8,"1010":3,"1026":1,"1033":1,"1111":5,"1177":95,"1311":7,"1313":1,"2222":1,"2277":6,"4000":2,"4004":1,"4015":1,"4040":2,"4422":1,"4444":3,"5505":6,"5515":1,"5555":33,"5588":1,"7000":1
+      },"brancos":9,"nulos":6,"legenda":3,"validos":183,"comparecimento":198
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10100":1,"10333":1,"11222":1,"11777":38,"15000":1,"22123":1,"22789":1,"40222":1,"43000":13,"43777":1,"44555":11,"44777":2,"50180":1,"55015":18,"55123":1,"55190":6,"55255":1,"55555":52,"55777":8,"70000":1,"70456":2,"70777":11
+      },"brancos":8,"nulos":9,"legenda":8,"validos":181,"comparecimento":198
+    },"SENADOR": {
+      "votos": {
+        "100":29,"101":17,"123":20,"131":88,"155":43,"221":3,"222":12,"444":95
+      },"brancos":40,"nulos":49,"legenda":0,"validos":307,"comparecimento":198
+    },"GOVERNADOR": {
+      "votos": {
+        "10":48,"22":3,"55":115
+      },"brancos":9,"nulos":23,"legenda":0,"validos":166,"comparecimento":198
+    }
+  }
+}, {
+  "secao":75,"local":1333,"comparecimento":209,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":139,"14":4,"22":46,"55":7,"70":4
+      },"brancos":3,"nulos":6,"legenda":0,"validos":200,"comparecimento":209
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":7,"1010":3,"1011":3,"1023":1,"1026":2,"1177":112,"1311":1,"2200":1,"2277":3,"4004":3,"4015":4,"4040":1,"4056":1,"4400":1,"4422":2,"4444":1,"5050":1,"5505":4,"5555":26,"7000":2
+      },"brancos":13,"nulos":11,"legenda":6,"validos":185,"comparecimento":209
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10333":2,"11222":1,"11777":49,"15555":1,"22123":1,"22200":1,"40000":1,"40400":1,"40444":1,"43000":8,"44111":1,"44333":1,"44555":7,"44777":2,"55015":22,"55190":5,"55255":3,"55555":53,"55777":6,"70000":1,"70456":4,"70777":6
+      },"brancos":8,"nulos":9,"legenda":15,"validos":192,"comparecimento":209
+    },"SENADOR": {
+      "votos": {
+        "100":23,"101":20,"123":10,"131":97,"155":50,"221":2,"222":15,"444":99,"500":2
+      },"brancos":38,"nulos":62,"legenda":0,"validos":318,"comparecimento":209
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":3,"50":1,"55":121
+      },"brancos":6,"nulos":22,"legenda":0,"validos":181,"comparecimento":209
+    }
+  }
+}, {
+  "secao":76,"local":1066,"comparecimento":234,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":167,"14":1,"22":37,"55":6,"70":7
+      },"brancos":5,"nulos":11,"legenda":0,"validos":218,"comparecimento":234
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1010":4,"1011":11,"1033":1,"1111":4,"1177":70,"2200":1,"4040":2,"4444":4,"5505":80,"5515":2,"5555":35,"5588":1
+      },"brancos":8,"nulos":3,"legenda":7,"validos":223,"comparecimento":234
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":12,"10333":2,"10777":1,"11111":1,"11777":31,"15111":1,"15123":1,"22123":6,"22200":8,"22222":2,"40000":2,"43000":11,"43777":2,"44000":5,"44333":5,"44555":31,"55015":1,"55111":1,"55190":2,"55255":1,"55555":39,"55777":30,"55888":1,"70456":8,"70777":1
+      },"brancos":7,"nulos":9,"legenda":13,"validos":218,"comparecimento":234
+    },"SENADOR": {
+      "votos": {
+        "100":23,"101":25,"123":69,"131":122,"155":28,"221":8,"222":13,"444":99,"500":7
+      },"brancos":24,"nulos":50,"legenda":0,"validos":394,"comparecimento":234
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":4,"45":1,"50":4,"55":137
+      },"brancos":7,"nulos":25,"legenda":0,"validos":202,"comparecimento":234
+    }
+  }
+}, {
+  "secao":77,"local":1066,"comparecimento":235,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":180,"14":3,"22":32,"55":6,"70":2
+      },"brancos":2,"nulos":10,"legenda":0,"validos":223,"comparecimento":235
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":3,"1011":8,"1111":4,"1177":65,"1311":1,"2200":2,"2222":1,"2277":1,"4444":4,"4577":1,"5505":84,"5515":3,"5555":35,"7010":1
+      },"brancos":4,"nulos":9,"legenda":9,"validos":222,"comparecimento":235
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":15,"10144":2,"10333":4,"11777":35,"15000":1,"15123":1,"20111":1,"22123":2,"22200":4,"22222":1,"22789":1,"40000":1,"40111":1,"43000":5,"43777":1,"44000":4,"44333":5,"44444":1,"44445":2,"44555":31,"55190":1,"55255":1,"55555":33,"55777":31,"70111":1,"70456":2,"70777":3
+      },"brancos":8,"nulos":18,"legenda":19,"validos":209,"comparecimento":235
+    },"SENADOR": {
+      "votos": {
+        "100":23,"101":35,"123":64,"131":117,"155":23,"221":3,"222":9,"444":95,"500":5
+      },"brancos":25,"nulos":71,"legenda":0,"validos":374,"comparecimento":235
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":4,"45":2,"50":2,"55":136
+      },"brancos":6,"nulos":29,"legenda":0,"validos":200,"comparecimento":235
+    }
+  }
+}, {
+  "secao":79,"local":1074,"comparecimento":237,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":160,"14":2,"22":52,"55":6,"70":4
+      },"brancos":5,"nulos":8,"legenda":0,"validos":224,"comparecimento":237
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1010":2,"1011":39,"1023":1,"1033":1,"1077":1,"1111":2,"1177":43,"1311":13,"1313":2,"2200":4,"2222":1,"2233":1,"2244":1,"4000":1,"4010":1,"4040":8,"4056":1,"4444":26,"5050":1,"5505":1,"5515":2,"5555":53,"5577":1,"5588":3,"7007":1
+      },"brancos":9,"nulos":9,"legenda":7,"validos":219,"comparecimento":237
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":7,"10333":2,"11777":34,"13000":1,"13131":1,"13555":4,"15500":1,"22200":4,"22222":1,"22522":1,"22789":1,"40000":8,"40111":2,"40123":4,"40222":1,"40300":1,"43000":4,"43777":12,"44000":6,"44111":2,"44555":6,"50180":7,"55015":1,"55190":10,"55255":4,"55555":50,"55777":21,"55999":1,"70123":1,"70456":2,"70777":2
+      },"brancos":10,"nulos":12,"legenda":13,"validos":215,"comparecimento":237
+    },"SENADOR": {
+      "votos": {
+        "100":52,"101":38,"123":71,"131":97,"155":27,"221":2,"222":24,"444":63,"500":9
+      },"brancos":38,"nulos":53,"legenda":0,"validos":383,"comparecimento":237
+    },"GOVERNADOR": {
+      "votos": {
+        "10":68,"22":7,"27":1,"45":1,"50":2,"55":126
+      },"brancos":13,"nulos":19,"legenda":0,"validos":205,"comparecimento":237
+    }
+  }
+}, {
+  "secao":80,"local":1074,"comparecimento":226,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":160,"14":2,"21":1,"22":42,"55":8,"70":2
+      },"brancos":3,"nulos":8,"legenda":0,"validos":215,"comparecimento":226
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":36,"1023":3,"1026":2,"1033":1,"1111":1,"1177":51,"1311":13,"1313":5,"1390":2,"2200":1,"2277":1,"4000":1,"4011":1,"4040":6,"4422":1,"4444":20,"5050":1,"5505":2,"5555":46,"5577":1,"5588":2
+      },"brancos":7,"nulos":10,"legenda":11,"validos":209,"comparecimento":226
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10010":1,"10111":5,"10166":1,"10333":2,"11777":33,"13000":1,"13555":1,"13900":1,"15000":1,"15111":1,"15190":1,"22123":1,"40000":7,"40111":2,"40222":1,"40400":1,"40444":1,"43000":8,"43777":5,"44222":1,"44321":1,"44444":1,"44555":6,"44744":1,"44777":6,"50180":4,"55015":3,"55190":8,"55255":5,"55555":35,"55777":20,"55999":1,"70123":7,"70333":1,"70456":1,"70777":8
+      },"brancos":7,"nulos":15,"legenda":21,"validos":204,"comparecimento":226
+    },"SENADOR": {
+      "votos": {
+        "100":47,"101":26,"123":53,"131":105,"155":30,"222":21,"277":1,"444":71,"500":5
+      },"brancos":29,"nulos":64,"legenda":0,"validos":359,"comparecimento":226
+    },"GOVERNADOR": {
+      "votos": {
+        "10":68,"22":5,"50":2,"55":122
+      },"brancos":7,"nulos":22,"legenda":0,"validos":197,"comparecimento":226
+    }
+  }
+}, {
+  "secao":81,"local":1074,"comparecimento":231,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":169,"14":2,"22":45,"55":1,"70":5
+      },"brancos":5,"nulos":4,"legenda":0,"validos":222,"comparecimento":231
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1010":2,"1011":36,"1023":1,"1026":3,"1033":3,"1077":1,"1111":1,"1177":47,"1311":15,"1313":4,"1390":4,"1414":1,"1477":1,"2200":3,"2222":1,"2244":2,"4040":5,"4422":2,"4444":19,"5010":1,"5050":2,"5505":1,"5515":2,"5555":43,"7007":2,"7077":1,"7777":1
+      },"brancos":14,"nulos":7,"legenda":5,"validos":210,"comparecimento":231
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":4,"10200":1,"10777":2,"11111":1,"11777":38,"13000":1,"13131":1,"13555":3,"13900":5,"15000":4,"15111":1,"15190":3,"20111":1,"22123":3,"22200":2,"40000":4,"40111":1,"40123":1,"40222":2,"43000":3,"43777":4,"44000":12,"44555":7,"44744":1,"44777":3,"50180":3,"55015":6,"55123":1,"55190":7,"55255":5,"55555":47,"55777":16,"70123":3,"70456":2,"70777":3,"70870":1
+      },"brancos":11,"nulos":7,"legenda":10,"validos":213,"comparecimento":231
+    },"SENADOR": {
+      "votos": {
+        "100":42,"101":42,"123":49,"131":116,"155":21,"221":3,"222":19,"444":64,"500":15
+      },"brancos":33,"nulos":58,"legenda":0,"validos":371,"comparecimento":231
+    },"GOVERNADOR": {
+      "votos": {
+        "10":71,"22":1,"50":3,"55":123
+      },"brancos":9,"nulos":24,"legenda":0,"validos":198,"comparecimento":231
+    }
+  }
+}, {
+  "secao":82,"local":1074,"comparecimento":247,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":172,"14":2,"22":58,"55":5,"70":1
+      },"brancos":1,"nulos":8,"legenda":0,"validos":238,"comparecimento":247
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":52,"1023":2,"1026":2,"1077":2,"1111":2,"1177":49,"1311":13,"1313":3,"1320":1,"1390":2,"2200":4,"2222":1,"2244":2,"4015":1,"4040":6,"4056":1,"4400":1,"4422":1,"4444":23,"5050":2,"5505":1,"5555":52,"5588":2,"7777":1
+      },"brancos":11,"nulos":7,"legenda":2,"validos":229,"comparecimento":247
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":11,"10123":1,"10333":3,"10666":1,"11777":37,"13000":2,"13555":4,"13900":2,"15130":1,"15190":3,"15555":1,"20111":1,"22123":2,"22200":5,"22789":2,"40000":5,"40222":2,"43000":5,"43777":12,"44000":6,"44111":2,"44123":1,"44222":1,"44321":3,"44555":3,"44777":5,"50180":7,"55015":3,"55123":1,"55190":8,"55255":3,"55555":38,"55777":29,"55999":1,"70123":2,"70333":1,"70456":1,"70777":2
+      },"brancos":12,"nulos":9,"legenda":8,"validos":226,"comparecimento":247
+    },"SENADOR": {
+      "votos": {
+        "100":54,"101":35,"123":72,"131":103,"155":26,"221":3,"222":32,"444":55,"500":9
+      },"brancos":51,"nulos":54,"legenda":0,"validos":389,"comparecimento":247
+    },"GOVERNADOR": {
+      "votos": {
+        "10":79,"22":6,"50":5,"55":121
+      },"brancos":13,"nulos":23,"legenda":0,"validos":211,"comparecimento":247
+    }
+  }
+}, {
+  "secao":83,"local":1074,"comparecimento":229,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":171,"14":2,"22":36,"55":9,"70":2
+      },"brancos":5,"nulos":4,"legenda":0,"validos":220,"comparecimento":229
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1011":42,"1023":1,"1026":1,"1033":1,"1077":1,"1111":1,"1177":47,"1311":9,"1313":6,"1390":2,"1414":1,"2200":4,"2222":2,"2244":1,"2277":1,"4004":1,"4040":5,"4313":1,"4422":1,"4444":20,"5555":56,"7777":1
+      },"brancos":11,"nulos":5,"legenda":8,"validos":213,"comparecimento":229
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":7,"10123":1,"10333":4,"11111":1,"11777":30,"13000":3,"13555":2,"13900":2,"15000":6,"15111":1,"15500":2,"22100":1,"22123":1,"22200":4,"22789":1,"40000":6,"40123":1,"40222":1,"40444":2,"43000":7,"43777":6,"44000":7,"44555":7,"44777":3,"50180":5,"55015":3,"55190":2,"55255":3,"55555":46,"55777":23,"55999":2,"70123":1,"70280":1,"70333":1,"70456":1,"70777":2
+      },"brancos":11,"nulos":10,"legenda":12,"validos":208,"comparecimento":229
+    },"SENADOR": {
+      "votos": {
+        "100":44,"101":32,"123":71,"131":102,"155":20,"221":6,"222":26,"444":53,"500":7
+      },"brancos":40,"nulos":57,"legenda":0,"validos":361,"comparecimento":229
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":7,"50":5,"55":127
+      },"brancos":9,"nulos":25,"legenda":0,"validos":195,"comparecimento":229
+    }
+  }
+}, {
+  "secao":84,"local":1074,"comparecimento":235,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":166,"14":1,"21":1,"22":47,"55":3,"70":2
+      },"brancos":4,"nulos":11,"legenda":0,"validos":220,"comparecimento":235
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1010":1,"1011":50,"1012":1,"1026":1,"1033":1,"1077":1,"1111":1,"1177":42,"1311":9,"1313":1,"1390":2,"2200":3,"2222":3,"2277":2,"4004":1,"4015":1,"4040":9,"4422":1,"4444":25,"5515":1,"5555":48
+      },"brancos":10,"nulos":7,"legenda":10,"validos":218,"comparecimento":235
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":9,"10333":1,"10777":1,"11777":31,"13131":1,"13900":1,"15000":3,"15111":2,"15190":3,"15500":3,"22200":1,"22555":1,"22789":1,"40000":10,"40400":1,"43000":3,"43777":8,"44000":6,"44111":1,"44222":1,"44321":2,"44555":8,"44777":2,"50180":3,"55015":4,"55190":12,"55255":4,"55555":40,"55777":20,"55888":1,"70123":1,"70456":2,"70777":8
+      },"brancos":14,"nulos":15,"legenda":11,"validos":206,"comparecimento":235
+    },"SENADOR": {
+      "votos": {
+        "100":46,"101":30,"123":64,"131":107,"155":24,"221":3,"222":15,"444":59,"500":5
+      },"brancos":41,"nulos":76,"legenda":0,"validos":353,"comparecimento":235
+    },"GOVERNADOR": {
+      "votos": {
+        "10":64,"22":4,"50":3,"55":124
+      },"brancos":11,"nulos":29,"legenda":0,"validos":195,"comparecimento":235
+    }
+  }
+}, {
+  "secao":86,"local":1252,"comparecimento":178,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":128,"22":37,"55":2,"70":4
+      },"brancos":4,"nulos":3,"legenda":0,"validos":171,"comparecimento":178
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1011":21,"1033":1,"1077":1,"1111":4,"1177":51,"1311":7,"1313":4,"1390":2,"2200":2,"2222":1,"4000":1,"4015":1,"4040":4,"4056":1,"4422":1,"4444":8,"5505":2,"5555":43
+      },"brancos":8,"nulos":8,"legenda":7,"validos":162,"comparecimento":178
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":8,"10123":1,"10333":3,"10777":3,"11777":26,"13000":1,"13333":1,"13555":1,"13900":2,"15111":1,"15190":1,"20111":2,"22123":1,"22200":3,"22555":1,"40000":2,"40111":2,"40222":9,"40777":1,"43000":3,"43777":7,"44000":9,"44555":2,"50180":2,"55015":3,"55111":1,"55123":1,"55190":4,"55255":2,"55555":32,"55777":13,"70333":2,"70456":2
+      },"brancos":5,"nulos":12,"legenda":9,"validos":161,"comparecimento":178
+    },"SENADOR": {
+      "votos": {
+        "100":27,"101":25,"123":41,"131":79,"155":24,"222":13,"444":72,"500":7
+      },"brancos":17,"nulos":51,"legenda":0,"validos":288,"comparecimento":178
+    },"GOVERNADOR": {
+      "votos": {
+        "10":41,"22":5,"27":1,"50":2,"55":106
+      },"brancos":4,"nulos":19,"legenda":0,"validos":155,"comparecimento":178
+    }
+  }
+}, {
+  "secao":91,"local":1252,"comparecimento":185,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":121,"14":2,"22":43,"55":4,"70":4
+      },"brancos":1,"nulos":10,"legenda":0,"validos":174,"comparecimento":185
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":24,"1023":1,"1026":2,"1033":2,"1111":4,"1177":51,"1311":11,"1313":4,"2200":1,"2210":1,"2222":1,"2323":1,"4000":1,"4011":1,"4015":2,"4040":7,"4056":3,"4422":2,"4444":7,"5505":1,"5515":2,"5555":37,"5588":1
+      },"brancos":5,"nulos":9,"legenda":3,"validos":171,"comparecimento":185
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":6,"10333":6,"11777":19,"13123":1,"13333":1,"13555":3,"13900":1,"15111":1,"20111":2,"22100":1,"22123":4,"22200":3,"40000":9,"40111":1,"40222":7,"43000":4,"43777":16,"44000":9,"44321":1,"44555":3,"44777":1,"50180":2,"55015":6,"55123":1,"55190":2,"55255":5,"55555":28,"55777":8,"55999":1,"70123":1,"70222":1,"70333":1,"70456":5,"70777":1
+      },"brancos":6,"nulos":9,"legenda":9,"validos":170,"comparecimento":185
+    },"SENADOR": {
+      "votos": {
+        "100":33,"101":38,"123":40,"131":81,"155":44,"221":4,"222":9,"277":1,"444":55,"500":4
+      },"brancos":19,"nulos":42,"legenda":0,"validos":309,"comparecimento":185
+    },"GOVERNADOR": {
+      "votos": {
+        "10":60,"22":2,"50":1,"55":100
+      },"brancos":4,"nulos":18,"legenda":0,"validos":163,"comparecimento":185
+    }
+  }
+}, {
+  "secao":97,"local":1333,"comparecimento":229,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":145,"14":2,"22":59,"55":10,"70":3
+      },"brancos":5,"nulos":5,"legenda":0,"validos":219,"comparecimento":229
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":12,"1010":1,"1011":5,"1026":6,"1111":2,"1177":110,"1311":7,"1313":6,"1533":1,"2200":2,"2211":1,"2222":1,"2277":6,"4004":2,"4015":6,"4040":2,"4444":3,"5505":6,"5515":2,"5555":27,"5577":1,"7000":1,"7077":1
+      },"brancos":5,"nulos":9,"legenda":4,"validos":215,"comparecimento":229
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":2,"10144":1,"10333":2,"11111":1,"11777":48,"13000":3,"15000":1,"15123":2,"15555":1,"40000":2,"40123":2,"40222":1,"40400":1,"43000":6,"43777":2,"44444":2,"44555":8,"44777":4,"55015":21,"55190":2,"55255":1,"55555":63,"55777":10,"55999":1,"70000":1,"70456":7,"70777":8
+      },"brancos":6,"nulos":5,"legenda":15,"validos":218,"comparecimento":229
+    },"SENADOR": {
+      "votos": {
+        "100":41,"101":21,"123":22,"131":103,"155":59,"221":5,"222":14,"277":1,"444":104,"500":3
+      },"brancos":32,"nulos":53,"legenda":0,"validos":373,"comparecimento":229
+    },"GOVERNADOR": {
+      "votos": {
+        "10":61,"22":5,"55":132
+      },"brancos":7,"nulos":24,"legenda":0,"validos":198,"comparecimento":229
+    }
+  }
+}, {
+  "secao":98,"local":1066,"comparecimento":135,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":100,"14":1,"21":1,"22":20,"55":5,"70":1
+      },"brancos":1,"nulos":6,"legenda":0,"validos":128,"comparecimento":135
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":1,"1011":4,"1026":1,"1111":1,"1177":39,"1311":3,"1313":1,"2200":1,"4000":2,"4444":2,"5505":49,"5555":17
+      },"brancos":5,"nulos":3,"legenda":6,"validos":127,"comparecimento":135
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":5,"11777":26,"22100":1,"22123":3,"22200":4,"40000":1,"40222":1,"43000":4,"43777":2,"44000":1,"44333":3,"44555":19,"44777":1,"50180":1,"55190":1,"55555":14,"55777":21,"70456":2
+      },"brancos":5,"nulos":8,"legenda":11,"validos":122,"comparecimento":135
+    },"SENADOR": {
+      "votos": {
+        "100":22,"101":19,"123":41,"131":70,"155":10,"221":1,"222":10,"444":51,"500":1
+      },"brancos":15,"nulos":30,"legenda":0,"validos":225,"comparecimento":135
+    },"GOVERNADOR": {
+      "votos": {
+        "10":38,"22":2,"50":1,"55":76
+      },"brancos":7,"nulos":11,"legenda":0,"validos":117,"comparecimento":135
+    }
+  }
+}, {
+  "secao":99,"local":1252,"comparecimento":185,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":131,"14":4,"22":37,"55":2,"70":4
+      },"brancos":1,"nulos":6,"legenda":0,"validos":178,"comparecimento":185
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1011":26,"1026":2,"1033":1,"1111":2,"1177":46,"1211":1,"1311":11,"1313":3,"1390":2,"2200":6,"2277":2,"4010":1,"4040":6,"4055":1,"4056":2,"4400":1,"4422":1,"4444":7,"5505":4,"5555":28,"5577":1,"5588":2
+      },"brancos":11,"nulos":9,"legenda":5,"validos":165,"comparecimento":185
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":8,"10200":1,"10222":1,"10333":4,"11777":11,"13000":4,"13131":1,"13555":1,"13900":3,"15111":2,"20111":2,"22100":1,"22122":1,"22200":1,"22789":2,"40000":3,"40222":16,"40444":1,"43000":4,"43777":12,"44000":13,"44222":2,"44333":2,"44555":3,"44777":2,"55015":6,"55190":3,"55255":3,"55555":35,"55777":11,"70222":2,"70777":3
+      },"brancos":4,"nulos":11,"legenda":6,"validos":170,"comparecimento":185
+    },"SENADOR": {
+      "votos": {
+        "100":31,"101":35,"123":38,"131":76,"155":35,"221":3,"222":13,"444":64,"500":11
+      },"brancos":27,"nulos":37,"legenda":0,"validos":306,"comparecimento":185
+    },"GOVERNADOR": {
+      "votos": {
+        "10":59,"22":1,"50":3,"55":102
+      },"brancos":4,"nulos":16,"legenda":0,"validos":165,"comparecimento":185
+    }
+  }
+}, {
+  "secao":101,"local":1090,"comparecimento":233,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":177,"14":3,"22":35,"55":1,"70":6
+      },"brancos":2,"nulos":9,"legenda":0,"validos":222,"comparecimento":233
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":6,"1011":2,"1111":4,"1112":2,"1177":58,"1311":7,"1313":7,"1444":1,"2222":2,"2233":1,"2323":1,"4000":30,"4040":22,"4056":2,"4422":3,"4444":19,"5511":1,"5515":1,"5555":50,"5577":1,"7010":1
+      },"brancos":6,"nulos":3,"legenda":3,"validos":224,"comparecimento":233
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":2,"11777":27,"13131":1,"13333":2,"13555":2,"15111":1,"15555":1,"22123":9,"22200":4,"22222":1,"40000":14,"40111":2,"40123":1,"40222":4,"43000":11,"43777":22,"44111":2,"44444":3,"44555":1,"50180":1,"55015":1,"55111":1,"55123":2,"55190":2,"55255":2,"55555":61,"55777":18,"70456":1,"70777":1
+      },"brancos":4,"nulos":8,"legenda":21,"validos":221,"comparecimento":233
+    },"SENADOR": {
+      "votos": {
+        "100":32,"101":29,"123":59,"131":88,"155":42,"221":1,"222":17,"444":114,"500":3
+      },"brancos":24,"nulos":57,"legenda":0,"validos":385,"comparecimento":233
+    },"GOVERNADOR": {
+      "votos": {
+        "10":19,"22":4,"27":1,"50":2,"55":183
+      },"brancos":5,"nulos":19,"legenda":0,"validos":209,"comparecimento":233
+    }
+  }
+}, {
+  "secao":106,"local":1252,"comparecimento":172,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":125,"22":33,"55":3,"70":4
+      },"brancos":2,"nulos":5,"legenda":0,"validos":165,"comparecimento":172
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1011":26,"1026":1,"1033":1,"1111":2,"1177":43,"1234":1,"1311":9,"1313":3,"1390":2,"2200":1,"2222":2,"4000":1,"4013":1,"4040":1,"4056":3,"4313":1,"4400":1,"4422":1,"4444":5,"5505":5,"5555":30,"5588":1,"7007":1
+      },"brancos":13,"nulos":9,"legenda":4,"validos":150,"comparecimento":172
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":9,"10123":1,"10333":4,"11777":15,"13000":2,"13555":2,"13900":1,"15111":2,"15190":2,"15500":1,"22123":1,"22200":4,"22789":1,"40000":2,"40111":1,"40222":10,"40400":1,"43000":3,"43777":6,"44000":9,"44111":2,"44123":1,"44444":1,"44555":2,"50180":2,"55015":6,"55111":1,"55190":2,"55255":4,"55555":29,"55777":13,"55999":1,"70333":2
+      },"brancos":7,"nulos":13,"legenda":9,"validos":152,"comparecimento":172
+    },"SENADOR": {
+      "votos": {
+        "100":25,"101":24,"123":47,"131":66,"155":30,"221":2,"222":11,"444":49,"500":6
+      },"brancos":36,"nulos":48,"legenda":0,"validos":260,"comparecimento":172
+    },"GOVERNADOR": {
+      "votos": {
+        "10":53,"22":3,"50":6,"55":80
+      },"brancos":4,"nulos":26,"legenda":0,"validos":142,"comparecimento":172
+    }
+  }
+}, {
+  "secao":111,"local":1139,"comparecimento":150,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":125,"14":1,"22":13,"35":1,"55":3
+      },"brancos":2,"nulos":5,"legenda":0,"validos":143,"comparecimento":150
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":4,"1010":5,"1011":2,"1033":1,"1177":55,"1211":1,"1311":19,"4040":1,"4444":2,"5505":11,"5515":4,"5555":21,"5577":1
+      },"brancos":8,"nulos":6,"legenda":9,"validos":136,"comparecimento":150
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"10144":2,"11777":8,"22123":3,"22222":1,"40000":2,"43000":7,"43777":22,"44000":1,"44111":1,"44123":1,"44333":6,"44555":6,"44744":1,"55190":1,"55255":2,"55555":44,"55777":13,"70333":2,"70777":2
+      },"brancos":7,"nulos":5,"legenda":12,"validos":138,"comparecimento":150
+    },"SENADOR": {
+      "votos": {
+        "100":15,"101":13,"123":14,"131":69,"155":25,"221":2,"222":20,"444":79
+      },"brancos":21,"nulos":42,"legenda":0,"validos":237,"comparecimento":150
+    },"GOVERNADOR": {
+      "votos": {
+        "10":32,"22":2,"55":98
+      },"brancos":3,"nulos":15,"legenda":0,"validos":132,"comparecimento":150
+    }
+  }
+}, {
+  "secao":112,"local":1287,"comparecimento":254,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":185,"22":46,"55":5,"70":6
+      },"brancos":2,"nulos":10,"legenda":0,"validos":242,"comparecimento":254
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1010":2,"1011":44,"1023":3,"1026":3,"1077":1,"1111":3,"1177":53,"1234":1,"1311":11,"1390":5,"2210":1,"2222":1,"2277":1,"4040":9,"4422":2,"4444":14,"5505":2,"5515":5,"5555":61,"5588":3,"7007":1
+      },"brancos":13,"nulos":4,"legenda":6,"validos":237,"comparecimento":254
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":6,"10333":1,"10777":1,"11111":1,"11777":33,"13131":1,"13555":4,"13900":2,"15000":3,"15190":1,"15500":2,"15555":1,"22100":1,"22123":1,"22200":2,"40000":12,"40111":1,"40123":1,"40222":2,"43000":6,"43777":7,"44000":5,"44555":7,"44744":1,"44777":7,"50180":4,"55015":5,"55111":1,"55190":14,"55255":8,"55555":44,"55777":15,"55999":3,"70123":2,"70333":1,"70456":1,"70777":8,"70789":1
+      },"brancos":12,"nulos":8,"legenda":18,"validos":234,"comparecimento":254
+    },"SENADOR": {
+      "votos": {
+        "100":44,"101":40,"123":65,"131":125,"155":25,"221":4,"222":23,"444":68,"500":8
+      },"brancos":44,"nulos":62,"legenda":0,"validos":402,"comparecimento":254
+    },"GOVERNADOR": {
+      "votos": {
+        "10":70,"22":10,"50":2,"55":139
+      },"brancos":11,"nulos":22,"legenda":0,"validos":221,"comparecimento":254
+    }
+  }
+}, {
+  "secao":119,"local":1090,"comparecimento":250,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":195,"14":2,"22":27,"55":6,"70":8
+      },"brancos":8,"nulos":4,"legenda":0,"validos":238,"comparecimento":250
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":9,"1011":6,"1023":1,"1033":1,"1111":2,"1112":2,"1177":54,"1311":13,"1313":1,"1333":1,"1390":2,"2200":2,"2222":1,"4000":17,"4011":1,"4040":16,"4422":3,"4444":13,"5019":1,"5505":1,"5511":1,"5515":1,"5555":77,"5577":1,"5588":1,"7010":1,"7022":1
+      },"brancos":12,"nulos":5,"legenda":3,"validos":233,"comparecimento":250
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":3,"10200":2,"10333":2,"11777":25,"13000":2,"13333":2,"13555":1,"13900":2,"15111":1,"22123":1,"22200":5,"22789":1,"40000":13,"40111":2,"40222":6,"40444":1,"43000":15,"43777":19,"44000":1,"44111":5,"44123":1,"44222":4,"44444":3,"50123":1,"50180":1,"55015":1,"55111":4,"55123":4,"55190":1,"55255":8,"55555":73,"55777":14
+      },"brancos":8,"nulos":6,"legenda":12,"validos":236,"comparecimento":250
+    },"SENADOR": {
+      "votos": {
+        "100":35,"101":31,"123":71,"131":99,"155":42,"221":1,"222":13,"444":114,"500":3
+      },"brancos":45,"nulos":46,"legenda":0,"validos":409,"comparecimento":250
+    },"GOVERNADOR": {
+      "votos": {
+        "10":32,"22":2,"50":3,"55":178
+      },"brancos":11,"nulos":24,"legenda":0,"validos":215,"comparecimento":250
+    }
+  }
+}, {
+  "secao":132,"local":1341,"comparecimento":280,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":173,"14":2,"22":72,"55":11,"70":3
+      },"brancos":5,"nulos":14,"legenda":0,"validos":261,"comparecimento":280
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":22,"1011":2,"1111":3,"1177":70,"1311":3,"1313":3,"1593":1,"2200":2,"4000":1,"4010":1,"4040":15,"4056":4,"4400":1,"4422":3,"4444":19,"5505":2,"5555":107
+      },"brancos":5,"nulos":6,"legenda":10,"validos":269,"comparecimento":280
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "11777":1,"15111":4,"15190":1,"15555":1,"20111":2,"22123":4,"22200":1,"40000":16,"40111":2,"40222":3,"40300":2,"43000":49,"43777":2,"44222":13,"44444":1,"44777":1,"50123":1,"55000":1,"55111":1,"55190":1,"55255":20,"55555":94,"55777":14,"55999":2,"70456":2
+      },"brancos":6,"nulos":15,"legenda":20,"validos":259,"comparecimento":280
+    },"SENADOR": {
+      "votos": {
+        "100":41,"101":41,"123":106,"131":65,"155":30,"221":2,"222":12,"444":172
+      },"brancos":18,"nulos":73,"legenda":0,"validos":469,"comparecimento":280
+    },"GOVERNADOR": {
+      "votos": {
+        "10":42,"22":16,"45":1,"50":1,"55":179
+      },"brancos":5,"nulos":36,"legenda":0,"validos":239,"comparecimento":280
+    }
+  }
+}, {
+  "secao":133,"local":1155,"comparecimento":288,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":222,"22":42,"55":4,"70":4
+      },"brancos":6,"nulos":10,"legenda":0,"validos":272,"comparecimento":288
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1010":2,"1011":24,"1026":1,"1033":1,"1111":1,"1177":103,"1255":1,"1311":11,"1313":28,"1390":1,"2200":1,"2222":2,"4000":1,"4004":1,"4040":4,"4444":8,"5505":7,"5515":1,"5555":46,"5588":1
+      },"brancos":18,"nulos":7,"legenda":13,"validos":263,"comparecimento":288
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":4,"10333":2,"11777":58,"13000":5,"13555":2,"15190":2,"20111":1,"22123":24,"22200":3,"40000":1,"40222":4,"43000":31,"43777":6,"44000":3,"44111":1,"44555":7,"50180":1,"55015":8,"55123":1,"55190":7,"55255":7,"55555":43,"55777":29
+      },"brancos":14,"nulos":8,"legenda":16,"validos":266,"comparecimento":288
+    },"SENADOR": {
+      "votos": {
+        "100":22,"101":32,"123":70,"131":166,"155":33,"221":1,"222":15,"444":99,"500":4
+      },"brancos":57,"nulos":77,"legenda":0,"validos":442,"comparecimento":288
+    },"GOVERNADOR": {
+      "votos": {
+        "10":68,"22":4,"45":1,"50":3,"55":157
+      },"brancos":15,"nulos":40,"legenda":0,"validos":233,"comparecimento":288
+    }
+  }
+}, {
+  "secao":134,"local":1163,"comparecimento":168,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":127,"14":1,"22":31,"55":2,"70":2
+      },"brancos":2,"nulos":3,"legenda":0,"validos":163,"comparecimento":168
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1011":5,"1026":1,"1033":1,"1111":2,"1177":34,"1311":24,"1320":6,"1333":1,"1555":1,"2200":2,"4004":1,"4010":1,"4040":7,"4422":1,"4444":2,"5019":3,"5505":1,"5515":12,"5555":53
+      },"brancos":6,"nulos":3,"legenda":1,"validos":159,"comparecimento":168
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":1,"10333":5,"11777":12,"13000":5,"13900":1,"22100":1,"22200":1,"22555":2,"40000":9,"40222":1,"40300":1,"43000":44,"43777":4,"44000":18,"44111":1,"44333":4,"44777":1,"50180":7,"55015":1,"55111":2,"55190":1,"55555":20,"55777":7,"70777":2
+      },"brancos":5,"nulos":4,"legenda":7,"validos":159,"comparecimento":168
+    },"SENADOR": {
+      "votos": {
+        "100":28,"101":16,"123":51,"131":100,"155":33,"221":2,"222":9,"444":23,"500":15
+      },"brancos":30,"nulos":29,"legenda":0,"validos":277,"comparecimento":168
+    },"GOVERNADOR": {
+      "votos": {
+        "10":56,"22":4,"50":4,"55":84
+      },"brancos":5,"nulos":15,"legenda":0,"validos":148,"comparecimento":168
+    }
+  }
+}, {
+  "secao":137,"local":1201,"comparecimento":291,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":239,"14":1,"22":27,"30":1,"55":7,"70":4
+      },"brancos":3,"nulos":9,"legenda":0,"validos":279,"comparecimento":291
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1011":24,"1026":1,"1033":1,"1111":6,"1112":2,"1177":77,"1236":1,"1311":21,"1313":1,"1390":1,"1500":1,"2200":1,"2210":1,"4004":2,"4040":5,"4444":17,"5000":1,"5505":3,"5515":2,"5555":96,"5577":1
+      },"brancos":7,"nulos":5,"legenda":12,"validos":279,"comparecimento":291
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":2,"11777":70,"13000":3,"13131":2,"13555":10,"13900":1,"15000":2,"15190":1,"15555":4,"20000":1,"20111":3,"22200":2,"22222":1,"40000":7,"40222":3,"43000":15,"43777":30,"44000":3,"44321":1,"44555":1,"50180":1,"55015":4,"55255":6,"55555":48,"55777":22,"55999":1,"70333":2,"70456":1,"70777":1
+      },"brancos":4,"nulos":19,"legenda":20,"validos":268,"comparecimento":291
+    },"SENADOR": {
+      "votos": {
+        "100":22,"101":24,"123":79,"131":182,"155":36,"221":3,"222":13,"444":123,"500":4
+      },"brancos":19,"nulos":77,"legenda":0,"validos":486,"comparecimento":291
+    },"GOVERNADOR": {
+      "votos": {
+        "10":84,"22":4,"45":1,"50":3,"55":164
+      },"brancos":2,"nulos":33,"legenda":0,"validos":256,"comparecimento":291
+    }
+  }
+}, {
+  "secao":138,"local":1210,"comparecimento":178,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":150,"22":18,"55":3,"70":1
+      },"brancos":1,"nulos":5,"legenda":0,"validos":172,"comparecimento":178
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":27,"1033":1,"1177":80,"1311":5,"1313":2,"1320":1,"1390":1,"4040":3,"4400":1,"4422":1,"4444":16,"5555":26,"5577":2,"5588":2
+      },"brancos":2,"nulos":5,"legenda":2,"validos":171,"comparecimento":178
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":3,"10333":1,"11777":14,"13555":1,"13900":1,"15000":1,"40000":4,"40300":1,"43000":19,"43777":1,"44000":1,"44555":1,"44777":1,"55015":1,"55190":5,"55255":1,"55555":69,"55777":36,"55999":6
+      },"brancos":1,"nulos":3,"legenda":7,"validos":174,"comparecimento":178
+    },"SENADOR": {
+      "votos": {
+        "100":21,"101":27,"123":80,"131":62,"155":10,"221":2,"222":22,"444":93,"500":2
+      },"brancos":8,"nulos":29,"legenda":0,"validos":319,"comparecimento":178
+    },"GOVERNADOR": {
+      "votos": {
+        "10":38,"50":2,"55":122
+      },"brancos":3,"nulos":13,"legenda":0,"validos":162,"comparecimento":178
+    }
+  }
+}, {
+  "secao":142,"local":1139,"comparecimento":267,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":227,"22":19,"55":7,"70":3
+      },"brancos":7,"nulos":4,"legenda":0,"validos":256,"comparecimento":267
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1010":3,"1011":2,"1111":3,"1177":111,"1234":2,"1311":46,"1313":1,"1320":1,"2200":1,"2222":2,"4000":1,"4040":2,"4444":3,"5505":24,"5515":2,"5555":35,"5577":1
+      },"brancos":14,"nulos":5,"legenda":6,"validos":248,"comparecimento":267
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"10144":1,"10333":1,"11111":1,"11777":18,"22123":2,"22555":1,"40000":5,"40444":2,"43000":11,"43777":45,"44123":1,"44333":12,"44555":3,"50180":1,"55190":2,"55555":82,"55777":36,"55999":1,"70333":1,"70777":2
+      },"brancos":11,"nulos":4,"legenda":23,"validos":252,"comparecimento":267
+    },"SENADOR": {
+      "votos": {
+        "100":33,"101":11,"123":25,"131":147,"155":37,"221":1,"222":36,"444":148,"500":1
+      },"brancos":46,"nulos":49,"legenda":0,"validos":439,"comparecimento":267
+    },"GOVERNADOR": {
+      "votos": {
+        "10":41,"22":3,"45":1,"50":2,"55":181
+      },"brancos":14,"nulos":25,"legenda":0,"validos":228,"comparecimento":267
+    }
+  }
+}, {
+  "secao":144,"local":1228,"comparecimento":232,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":172,"14":1,"22":35,"55":9,"70":6
+      },"brancos":1,"nulos":8,"legenda":0,"validos":223,"comparecimento":232
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":23,"1011":5,"1111":1,"1112":1,"1177":42,"1311":7,"1313":21,"1390":1,"2011":1,"2200":2,"2222":3,"4000":6,"4013":1,"4015":5,"4040":24,"4444":32,"5505":3,"5515":2,"5555":25,"5577":1,"7090":1
+      },"brancos":8,"nulos":5,"legenda":12,"validos":219,"comparecimento":232
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10200":1,"11777":14,"13133":1,"13900":2,"15111":2,"22123":20,"22222":1,"40000":12,"40111":7,"40400":2,"43000":7,"43777":11,"44000":6,"44222":3,"44444":4,"44555":2,"50180":1,"55111":4,"55123":1,"55190":1,"55255":14,"55555":36,"55777":26,"70000":2,"70456":12
+      },"brancos":11,"nulos":10,"legenda":19,"validos":211,"comparecimento":232
+    },"SENADOR": {
+      "votos": {
+        "100":34,"101":21,"123":50,"131":87,"155":45,"221":4,"222":16,"444":98,"500":2
+      },"brancos":39,"nulos":68,"legenda":0,"validos":357,"comparecimento":232
+    },"GOVERNADOR": {
+      "votos": {
+        "10":37,"22":6,"50":2,"55":153
+      },"brancos":9,"nulos":25,"legenda":0,"validos":198,"comparecimento":232
+    }
+  }
+}, {
+  "secao":145,"local":1279,"comparecimento":219,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":158,"22":38,"55":2,"70":2
+      },"brancos":9,"nulos":10,"legenda":0,"validos":200,"comparecimento":219
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":1,"1011":23,"1026":2,"1177":80,"1311":14,"2200":1,"4000":1,"4011":1,"4040":7,"4444":15,"5505":2,"5515":1,"5555":45,"7777":1
+      },"brancos":17,"nulos":2,"legenda":6,"validos":200,"comparecimento":219
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"10333":1,"11777":42,"15123":1,"22123":1,"22200":6,"40111":3,"40123":1,"43000":6,"43777":11,"44000":6,"44111":1,"44555":1,"44777":1,"55015":2,"55123":1,"55190":10,"55555":47,"55777":28
+      },"brancos":16,"nulos":3,"legenda":30,"validos":200,"comparecimento":219
+    },"SENADOR": {
+      "votos": {
+        "100":44,"101":19,"123":35,"131":80,"155":8,"221":1,"222":15,"444":119
+      },"brancos":50,"nulos":67,"legenda":0,"validos":321,"comparecimento":219
+    },"GOVERNADOR": {
+      "votos": {
+        "10":40,"22":9,"55":128
+      },"brancos":15,"nulos":27,"legenda":0,"validos":177,"comparecimento":219
+    }
+  }
+}, {
+  "secao":147,"local":1287,"comparecimento":247,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":177,"14":5,"22":49,"55":3,"70":11
+      },"brancos":1,"nulos":1,"legenda":0,"validos":245,"comparecimento":247
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":3,"1011":46,"1023":2,"1026":1,"1177":49,"1311":17,"1313":4,"1390":1,"1414":2,"2200":4,"2277":1,"4000":1,"4004":1,"4010":1,"4015":1,"4040":9,"4056":3,"4420":1,"4422":2,"4444":25,"5010":1,"5505":1,"5515":1,"5555":45,"5577":1,"5588":2,"7007":1,"7010":1
+      },"brancos":10,"nulos":2,"legenda":8,"validos":235,"comparecimento":247
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":5,"10123":1,"10333":3,"11777":37,"13000":2,"13189":2,"13555":3,"13900":1,"15000":2,"15500":4,"22123":1,"22200":2,"22789":2,"40000":8,"40111":1,"40123":2,"40222":1,"43000":8,"43777":5,"44000":12,"44111":1,"44123":1,"44222":1,"44321":2,"44555":7,"44744":1,"44777":4,"50180":3,"55015":6,"55190":16,"55255":1,"55555":36,"55777":25,"55999":1,"70123":2,"70180":1,"70456":3,"70777":8,"70999":1
+      },"brancos":12,"nulos":4,"legenda":9,"validos":231,"comparecimento":247
+    },"SENADOR": {
+      "votos": {
+        "100":60,"101":39,"123":63,"131":120,"155":29,"221":4,"222":20,"444":80,"500":11
+      },"brancos":39,"nulos":29,"legenda":0,"validos":426,"comparecimento":247
+    },"GOVERNADOR": {
+      "votos": {
+        "10":84,"22":1,"50":5,"55":129
+      },"brancos":13,"nulos":15,"legenda":0,"validos":219,"comparecimento":247
+    }
+  }
+}, {
+  "secao":148,"local":1155,"comparecimento":305,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":239,"14":6,"22":40,"55":3,"70":4
+      },"brancos":10,"nulos":3,"legenda":0,"validos":292,"comparecimento":305
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":4,"1011":26,"1012":1,"1033":1,"1112":1,"1177":122,"1311":21,"1313":25,"1390":1,"1414":1,"1444":1,"2200":2,"2222":2,"2255":1,"4040":3,"4444":7,"5505":2,"5515":4,"5555":42,"5577":5,"7007":1
+      },"brancos":18,"nulos":8,"legenda":6,"validos":279,"comparecimento":305
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":4,"10300":2,"10333":4,"11777":68,"13000":4,"13003":2,"13555":2,"13900":1,"15190":2,"22123":25,"22200":5,"22322":1,"40000":2,"40222":4,"43000":22,"43777":9,"44000":3,"44111":2,"44445":1,"44555":9,"50180":2,"55015":4,"55190":4,"55255":8,"55555":41,"55777":27,"70280":1
+      },"brancos":14,"nulos":14,"legenda":18,"validos":277,"comparecimento":305
+    },"SENADOR": {
+      "votos": {
+        "100":25,"101":22,"123":64,"131":179,"155":42,"222":16,"444":108,"500":3
+      },"brancos":81,"nulos":70,"legenda":0,"validos":459,"comparecimento":305
+    },"GOVERNADOR": {
+      "votos": {
+        "10":75,"22":5,"50":3,"55":173
+      },"brancos":23,"nulos":26,"legenda":0,"validos":256,"comparecimento":305
+    }
+  }
+}, {
+  "secao":151,"local":1236,"comparecimento":180,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":151,"22":10,"55":3
+      },"brancos":3,"nulos":13,"legenda":0,"validos":164,"comparecimento":180
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1011":7,"1111":2,"1177":31,"1234":1,"1311":32,"1313":5,"1390":3,"2201":2,"4015":1,"4040":6,"4444":11,"5019":1,"5515":2,"5555":53,"5577":1,"7000":1
+      },"brancos":8,"nulos":6,"legenda":7,"validos":166,"comparecimento":180
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":2,"11777":26,"13000":3,"13131":1,"13333":1,"13555":1,"13900":1,"22123":2,"22200":7,"40000":8,"40222":1,"40333":1,"43000":8,"43777":7,"44000":5,"44222":1,"44777":1,"50180":1,"55015":1,"55255":8,"55555":41,"55777":15,"70456":2,"70777":2
+      },"brancos":9,"nulos":10,"legenda":15,"validos":161,"comparecimento":180
+    },"SENADOR": {
+      "votos": {
+        "100":8,"101":5,"123":27,"131":109,"155":25,"221":3,"222":4,"444":80,"500":4
+      },"brancos":29,"nulos":66,"legenda":0,"validos":265,"comparecimento":180
+    },"GOVERNADOR": {
+      "votos": {
+        "10":20,"45":1,"50":2,"55":110
+      },"brancos":11,"nulos":36,"legenda":0,"validos":133,"comparecimento":180
+    }
+  }
+}, {
+  "secao":161,"local":1287,"comparecimento":245,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":175,"14":2,"22":49,"55":3,"70":7
+      },"brancos":1,"nulos":8,"legenda":0,"validos":236,"comparecimento":245
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1010":2,"1011":50,"1023":2,"1026":2,"1033":2,"1077":1,"1111":1,"1177":60,"1311":12,"1313":2,"1390":3,"1414":1,"1500":1,"2200":3,"2222":3,"4000":1,"4004":2,"4015":1,"4040":4,"4056":2,"4422":1,"4444":22,"4522":1,"5505":2,"5515":1,"5555":39,"5577":1,"5588":3
+      },"brancos":10,"nulos":5,"legenda":3,"validos":230,"comparecimento":245
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":5,"10123":1,"10200":1,"11111":1,"11777":45,"13000":1,"13555":2,"13900":1,"15000":2,"15111":1,"15190":2,"15500":1,"20555":1,"22122":1,"22123":2,"22200":2,"40000":1,"40123":1,"40222":3,"40400":2,"40444":2,"43000":8,"43777":9,"44000":9,"44321":1,"44444":1,"44555":1,"44777":6,"50180":1,"50777":1,"55015":5,"55123":1,"55190":21,"55255":3,"55555":28,"55777":24,"55999":1,"70123":2,"70333":1,"70456":2,"70777":10
+      },"brancos":10,"nulos":10,"legenda":12,"validos":225,"comparecimento":245
+    },"SENADOR": {
+      "votos": {
+        "100":46,"101":40,"123":58,"131":101,"155":37,"221":9,"222":26,"444":73,"500":7
+      },"brancos":38,"nulos":55,"legenda":0,"validos":397,"comparecimento":245
+    },"GOVERNADOR": {
+      "votos": {
+        "10":70,"22":5,"50":4,"55":133
+      },"brancos":9,"nulos":24,"legenda":0,"validos":212,"comparecimento":245
+    }
+  }
+}, {
+  "secao":162,"local":1341,"comparecimento":205,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":140,"22":52,"55":5
+      },"brancos":4,"nulos":4,"legenda":0,"validos":197,"comparecimento":205
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":9,"1011":7,"1026":2,"1033":1,"1111":3,"1177":32,"1311":1,"1313":1,"2200":3,"2222":1,"4015":1,"4040":11,"4400":1,"4422":1,"4444":16,"5555":105
+      },"brancos":3,"nulos":2,"legenda":5,"validos":200,"comparecimento":205
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10333":1,"11777":1,"15111":1,"15555":1,"20111":1,"22123":2,"22200":2,"40000":4,"40111":1,"40123":2,"43000":28,"44222":6,"44444":2,"44555":4,"55190":2,"55255":15,"55555":84,"55777":17,"70456":3
+      },"brancos":5,"nulos":10,"legenda":13,"validos":190,"comparecimento":205
+    },"SENADOR": {
+      "votos": {
+        "100":29,"101":32,"123":91,"131":41,"155":20,"221":3,"222":5,"444":131
+      },"brancos":16,"nulos":42,"legenda":0,"validos":352,"comparecimento":205
+    },"GOVERNADOR": {
+      "votos": {
+        "10":37,"22":7,"55":139
+      },"brancos":6,"nulos":16,"legenda":0,"validos":183,"comparecimento":205
+    }
+  }
+}, {
+  "secao":164,"local":1279,"comparecimento":230,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":172,"22":30,"55":5,"70":6
+      },"brancos":10,"nulos":7,"legenda":0,"validos":213,"comparecimento":230
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":1,"1011":25,"1033":1,"1111":2,"1177":72,"1311":18,"4000":1,"4040":5,"4056":2,"4422":1,"4444":16,"5505":3,"5555":52,"5577":1
+      },"brancos":13,"nulos":9,"legenda":8,"validos":208,"comparecimento":230
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":5,"11777":50,"22200":7,"22789":1,"40000":1,"40111":1,"40123":3,"40400":1,"43000":16,"43777":13,"44000":9,"44321":1,"44555":1,"44777":2,"55015":1,"55111":1,"55123":2,"55190":4,"55555":36,"55777":37
+      },"brancos":13,"nulos":8,"legenda":17,"validos":209,"comparecimento":230
+    },"SENADOR": {
+      "votos": {
+        "100":43,"101":17,"123":40,"131":100,"155":10,"221":2,"222":13,"444":135
+      },"brancos":65,"nulos":35,"legenda":0,"validos":360,"comparecimento":230
+    },"GOVERNADOR": {
+      "votos": {
+        "10":44,"22":4,"55":140
+      },"brancos":19,"nulos":23,"legenda":0,"validos":188,"comparecimento":230
+    }
+  }
+}, {
+  "secao":165,"local":1236,"comparecimento":309,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":271,"22":21,"55":3,"70":4
+      },"brancos":2,"nulos":8,"legenda":0,"validos":299,"comparecimento":309
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":12,"1026":1,"1033":1,"1111":4,"1177":73,"1311":63,"1313":5,"1320":1,"1577":1,"2201":1,"2210":1,"4000":1,"4015":1,"4040":5,"4444":24,"5515":4,"5555":70,"5577":1,"5588":1
+      },"brancos":18,"nulos":11,"legenda":9,"validos":280,"comparecimento":309
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10333":2,"11111":2,"11777":58,"13000":3,"13131":2,"13555":5,"15500":1,"15777":1,"22122":1,"22123":2,"22200":11,"40000":5,"40222":2,"40777":1,"43000":9,"43777":27,"44000":6,"44123":1,"44222":1,"44444":1,"55015":4,"55190":1,"55255":16,"55555":67,"55777":31,"55999":1,"70456":3,"70777":1
+      },"brancos":19,"nulos":12,"legenda":13,"validos":278,"comparecimento":309
+    },"SENADOR": {
+      "votos": {
+        "100":19,"101":12,"123":36,"131":191,"155":48,"221":2,"222":2,"444":139,"500":2
+      },"brancos":89,"nulos":78,"legenda":0,"validos":451,"comparecimento":309
+    },"GOVERNADOR": {
+      "votos": {
+        "10":40,"22":2,"27":1,"45":2,"55":201
+      },"brancos":23,"nulos":40,"legenda":0,"validos":246,"comparecimento":309
+    }
+  }
+}, {
+  "secao":166,"local":1090,"comparecimento":248,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":183,"14":2,"22":45,"55":4,"70":9
+      },"brancos":1,"nulos":4,"legenda":0,"validos":243,"comparecimento":248
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":11,"1011":5,"1033":1,"1111":5,"1177":47,"1311":9,"1313":1,"2200":2,"2222":3,"4000":33,"4040":13,"4422":1,"4444":24,"5019":1,"5505":1,"5555":64,"5588":1
+      },"brancos":13,"nulos":3,"legenda":10,"validos":232,"comparecimento":248
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10122":1,"10200":1,"10333":2,"10777":1,"11777":30,"13000":1,"15555":1,"20111":1,"22123":4,"22200":5,"40000":11,"40111":2,"40222":4,"43000":16,"43777":37,"44111":6,"44222":2,"44444":2,"44555":1,"44777":3,"50180":1,"55123":1,"55190":1,"55255":2,"55555":64,"55777":21,"70456":1,"70777":1
+      },"brancos":10,"nulos":2,"legenda":12,"validos":236,"comparecimento":248
+    },"SENADOR": {
+      "votos": {
+        "100":38,"101":23,"123":71,"131":90,"155":40,"221":2,"222":14,"444":110
+      },"brancos":64,"nulos":44,"legenda":0,"validos":388,"comparecimento":248
+    },"GOVERNADOR": {
+      "votos": {
+        "10":25,"22":2,"55":188
+      },"brancos":12,"nulos":21,"legenda":0,"validos":215,"comparecimento":248
+    }
+  }
+}, {
+  "secao":168,"local":1295,"comparecimento":188,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":128,"14":1,"22":24,"55":5,"70":2
+      },"brancos":4,"nulos":24,"legenda":0,"validos":160,"comparecimento":188
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1010":4,"1011":17,"1077":1,"1111":1,"1112":1,"1177":63,"1234":1,"1311":10,"4040":1,"4444":3,"5505":6,"5555":38,"7077":1
+      },"brancos":7,"nulos":11,"legenda":18,"validos":170,"comparecimento":188
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10144":1,"10333":2,"10777":1,"11123":1,"11777":23,"13000":3,"20444":1,"22123":33,"22200":7,"43000":13,"43777":1,"44000":4,"44444":1,"44555":3,"44744":2,"55111":2,"55555":28,"55777":7,"70333":4,"70777":9
+      },"brancos":8,"nulos":17,"legenda":17,"validos":163,"comparecimento":188
+    },"SENADOR": {
+      "votos": {
+        "100":16,"101":9,"123":13,"131":92,"155":9,"222":17,"444":108
+      },"brancos":25,"nulos":87,"legenda":0,"validos":264,"comparecimento":188
+    },"GOVERNADOR": {
+      "votos": {
+        "10":28,"22":5,"55":104
+      },"brancos":6,"nulos":45,"legenda":0,"validos":137,"comparecimento":188
+    }
+  }
+}, {
+  "secao":169,"local":1309,"comparecimento":237,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":208,"14":1,"22":15,"55":5,"70":1
+      },"brancos":1,"nulos":6,"legenda":0,"validos":230,"comparecimento":237
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":7,"1011":58,"1077":3,"1111":2,"1177":33,"1211":1,"1311":6,"1313":24,"2222":1,"4000":1,"4040":6,"4444":12,"5505":9,"5555":57,"5577":1
+      },"brancos":6,"nulos":4,"legenda":6,"validos":227,"comparecimento":237
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":40,"10333":1,"11777":4,"13000":3,"22123":23,"22200":2,"22221":1,"40000":1,"40123":6,"40222":1,"43000":18,"44000":3,"44555":8,"44777":7,"50180":1,"55190":4,"55255":17,"55555":21,"55777":33,"70777":2
+      },"brancos":7,"nulos":6,"legenda":27,"validos":224,"comparecimento":237
+    },"SENADOR": {
+      "votos": {
+        "100":71,"101":48,"123":34,"131":99,"155":34,"222":12,"444":86,"500":1
+      },"brancos":37,"nulos":52,"legenda":0,"validos":385,"comparecimento":237
+    },"GOVERNADOR": {
+      "votos": {
+        "10":53,"22":3,"45":1,"50":3,"55":131
+      },"brancos":9,"nulos":37,"legenda":0,"validos":191,"comparecimento":237
+    }
+  }
+}, {
+  "secao":170,"local":1376,"comparecimento":311,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":249,"14":1,"22":44,"55":6,"70":3
+      },"brancos":5,"nulos":3,"legenda":0,"validos":303,"comparecimento":311
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":3,"1011":20,"1033":1,"1077":1,"1111":1,"1177":121,"1311":15,"1313":28,"1320":1,"2200":5,"2222":2,"4422":2,"4444":5,"5505":2,"5515":2,"5555":46,"5577":5,"5588":1,"7777":1
+      },"brancos":22,"nulos":5,"legenda":22,"validos":284,"comparecimento":311
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":7,"10300":7,"10333":3,"10777":1,"11777":73,"13555":2,"22122":1,"22123":25,"22200":2,"40000":1,"40222":7,"43000":22,"43777":13,"44000":4,"44111":6,"44444":1,"44555":2,"55015":6,"55190":8,"55555":43,"55777":25,"70280":2,"70333":1,"70456":2,"70777":1
+      },"brancos":18,"nulos":5,"legenda":23,"validos":288,"comparecimento":311
+    },"SENADOR": {
+      "votos": {
+        "100":27,"101":22,"123":55,"131":172,"155":30,"221":2,"222":17,"444":134,"500":2
+      },"brancos":82,"nulos":79,"legenda":0,"validos":461,"comparecimento":311
+    },"GOVERNADOR": {
+      "votos": {
+        "10":50,"22":5,"50":2,"55":197
+      },"brancos":21,"nulos":36,"legenda":0,"validos":254,"comparecimento":311
+    }
+  }
+}, {
+  "secao":173,"local":1228,"comparecimento":240,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":171,"14":1,"22":43,"55":9,"70":9
+      },"brancos":3,"nulos":4,"legenda":0,"validos":233,"comparecimento":240
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":35,"1011":5,"1033":2,"1111":1,"1112":1,"1177":53,"1311":28,"1313":6,"2222":2,"2255":1,"4000":4,"4015":2,"4040":16,"4422":1,"4444":38,"5515":1,"5555":29,"5588":1
+      },"brancos":7,"nulos":4,"legenda":3,"validos":229,"comparecimento":240
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":1,"10200":1,"10666":1,"11777":30,"13555":1,"13900":3,"15111":1,"20111":1,"22123":14,"22200":5,"22555":1,"40000":5,"40111":9,"40222":2,"43000":15,"43777":28,"44000":4,"44222":1,"44444":1,"44555":1,"50180":3,"55123":1,"55190":1,"55255":12,"55555":42,"55777":21,"70456":8
+      },"brancos":9,"nulos":7,"legenda":10,"validos":224,"comparecimento":240
+    },"SENADOR": {
+      "votos": {
+        "100":50,"101":33,"123":52,"131":97,"155":40,"221":3,"222":28,"444":81,"500":4
+      },"brancos":41,"nulos":51,"legenda":0,"validos":388,"comparecimento":240
+    },"GOVERNADOR": {
+      "votos": {
+        "10":49,"22":2,"50":1,"55":154
+      },"brancos":7,"nulos":27,"legenda":0,"validos":206,"comparecimento":240
+    }
+  }
+}, {
+  "secao":183,"local":1317,"comparecimento":164,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":132,"22":8,"30":1,"55":8,"70":5
+      },"brancos":2,"nulos":8,"legenda":0,"validos":154,"comparecimento":164
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1010":1,"1011":1,"1111":2,"1177":50,"1311":1,"1313":17,"2222":2,"4422":2,"4444":11,"5505":13,"5515":3,"5555":34
+      },"brancos":5,"nulos":6,"legenda":15,"validos":153,"comparecimento":164
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":1,"10333":1,"11777":19,"13000":1,"15000":1,"15190":1,"22123":18,"40000":4,"40222":2,"43000":14,"43777":1,"44555":7,"44744":1,"55015":2,"55555":33,"55777":28,"55888":1,"55999":1,"70777":1
+      },"brancos":4,"nulos":11,"legenda":11,"validos":149,"comparecimento":164
+    },"SENADOR": {
+      "votos": {
+        "100":27,"101":13,"123":33,"131":83,"155":15,"221":3,"222":7,"444":83
+      },"brancos":13,"nulos":51,"legenda":0,"validos":264,"comparecimento":164
+    },"GOVERNADOR": {
+      "votos": {
+        "10":19,"22":2,"55":109
+      },"brancos":5,"nulos":29,"legenda":0,"validos":130,"comparecimento":164
+    }
+  }
+}, {
+  "secao":185,"local":1201,"comparecimento":282,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":222,"14":3,"22":33,"27":1,"55":6,"70":5
+      },"brancos":2,"nulos":10,"legenda":0,"validos":270,"comparecimento":282
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1011":45,"1012":1,"1033":1,"1111":2,"1112":1,"1177":66,"1311":24,"1320":1,"1390":2,"2011":1,"2200":2,"4000":2,"4004":1,"4422":2,"4444":16,"5505":1,"5515":4,"5555":80
+      },"brancos":6,"nulos":10,"legenda":12,"validos":266,"comparecimento":282
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":3,"11777":54,"13000":4,"13111":1,"13123":1,"13131":2,"13555":6,"13900":1,"15111":5,"22200":1,"40222":5,"40300":1,"43000":19,"43777":35,"44000":4,"44333":1,"44555":4,"44777":2,"50500":1,"55015":4,"55190":1,"55255":5,"55444":1,"55555":44,"55777":37,"70456":3,"70777":1,"70999":1
+      },"brancos":5,"nulos":14,"legenda":15,"validos":263,"comparecimento":282
+    },"SENADOR": {
+      "votos": {
+        "100":22,"101":28,"123":80,"131":183,"155":28,"221":1,"222":9,"277":1,"444":106,"500":5
+      },"brancos":40,"nulos":61,"legenda":0,"validos":463,"comparecimento":282
+    },"GOVERNADOR": {
+      "votos": {
+        "10":85,"22":5,"50":2,"55":153
+      },"brancos":11,"nulos":26,"legenda":0,"validos":245,"comparecimento":282
+    }
+  }
+}, {
+  "secao":197,"local":1376,"comparecimento":309,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":233,"14":4,"22":39,"55":4,"70":9
+      },"brancos":7,"nulos":13,"legenda":0,"validos":289,"comparecimento":309
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1010":5,"1011":17,"1033":2,"1111":3,"1112":1,"1177":141,"1234":1,"1311":15,"1313":21,"1320":1,"1390":1,"1414":1,"1533":1,"2200":3,"2222":1,"4015":1,"4040":1,"4422":1,"4444":6,"5515":1,"5555":38,"5577":3
+      },"brancos":18,"nulos":10,"legenda":15,"validos":281,"comparecimento":309
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":10,"10123":1,"10333":2,"11777":85,"13131":1,"13555":3,"13900":1,"15190":1,"20111":1,"22123":19,"22200":8,"40222":3,"43000":21,"43777":13,"44000":4,"44111":3,"44123":1,"44222":1,"44555":2,"50123":1,"50180":1,"55015":4,"55190":4,"55255":1,"55555":51,"55777":20,"70280":1
+      },"brancos":18,"nulos":13,"legenda":15,"validos":278,"comparecimento":309
+    },"SENADOR": {
+      "votos": {
+        "100":18,"101":21,"123":68,"131":174,"155":33,"221":2,"222":18,"277":1,"444":116,"500":4
+      },"brancos":77,"nulos":86,"legenda":0,"validos":455,"comparecimento":309
+    },"GOVERNADOR": {
+      "votos": {
+        "10":60,"22":3,"45":1,"50":1,"55":187
+      },"brancos":18,"nulos":39,"legenda":0,"validos":252,"comparecimento":309
+    }
+  }
+}, {
+  "secao":199,"local":1368,"comparecimento":234,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":173,"22":28,"55":8,"70":7
+      },"brancos":6,"nulos":12,"legenda":0,"validos":216,"comparecimento":234
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":8,"1026":2,"1033":1,"1177":121,"1311":22,"1313":4,"1320":1,"2210":2,"4444":8,"5515":3,"5555":29
+      },"brancos":8,"nulos":13,"legenda":11,"validos":213,"comparecimento":234
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":7,"10300":1,"10333":1,"11777":75,"22123":14,"22200":11,"40222":3,"43000":8,"43777":18,"44000":3,"44444":1,"55015":4,"55255":10,"55555":31,"55777":9,"55999":2,"70456":1
+      },"brancos":8,"nulos":10,"legenda":17,"validos":216,"comparecimento":234
+    },"SENADOR": {
+      "votos": {
+        "100":25,"101":18,"123":26,"131":118,"155":20,"221":1,"222":8,"444":118
+      },"brancos":45,"nulos":89,"legenda":0,"validos":334,"comparecimento":234
+    },"GOVERNADOR": {
+      "votos": {
+        "10":55,"22":1,"45":2,"55":126
+      },"brancos":11,"nulos":39,"legenda":0,"validos":184,"comparecimento":234
+    }
+  }
+}, {
+  "secao":201,"local":1295,"comparecimento":115,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":80,"22":20,"55":4,"70":1
+      },"brancos":3,"nulos":7,"legenda":0,"validos":105,"comparecimento":115
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":2,"1010":8,"1011":13,"1177":38,"1311":6,"1593":1,"2222":1,"4444":1,"5505":4,"5515":1,"5555":28
+      },"brancos":4,"nulos":4,"legenda":4,"validos":107,"comparecimento":115
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10122":1,"10144":1,"10333":1,"10777":1,"11777":17,"13000":2,"13131":1,"22123":11,"22200":6,"43000":11,"43777":2,"44000":5,"44555":2,"44744":4,"55192":1,"55255":1,"55555":25,"55777":3,"70456":1,"70777":4
+      },"brancos":3,"nulos":7,"legenda":5,"validos":105,"comparecimento":115
+    },"SENADOR": {
+      "votos": {
+        "100":8,"101":11,"123":16,"131":64,"155":8,"221":1,"222":13,"444":66
+      },"brancos":9,"nulos":34,"legenda":0,"validos":187,"comparecimento":115
+    },"GOVERNADOR": {
+      "votos": {
+        "10":28,"22":4,"55":63
+      },"brancos":3,"nulos":17,"legenda":0,"validos":95,"comparecimento":115
+    }
+  }
+}, {
+  "secao":205,"local":1317,"comparecimento":174,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":138,"14":2,"22":14,"55":7,"70":4
+      },"brancos":1,"nulos":8,"legenda":0,"validos":165,"comparecimento":174
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1010":2,"1011":2,"1111":1,"1112":1,"1177":54,"1311":6,"1313":12,"1414":1,"2222":2,"4004":1,"4015":1,"4420":1,"4422":1,"4444":13,"5505":10,"5513":1,"5515":3,"5555":42
+      },"brancos":9,"nulos":3,"legenda":7,"validos":162,"comparecimento":174
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"11777":24,"13000":2,"15000":1,"15500":1,"20111":2,"22123":31,"40000":4,"40222":2,"43000":19,"44111":1,"44555":2,"55015":1,"55255":1,"55555":37,"55777":25,"70456":1,"70777":2
+      },"brancos":5,"nulos":6,"legenda":6,"validos":163,"comparecimento":174
+    },"SENADOR": {
+      "votos": {
+        "100":30,"101":18,"123":40,"131":84,"155":14,"221":6,"222":12,"277":1,"444":91
+      },"brancos":20,"nulos":32,"legenda":0,"validos":296,"comparecimento":174
+    },"GOVERNADOR": {
+      "votos": {
+        "10":31,"22":2,"50":1,"55":114
+      },"brancos":4,"nulos":22,"legenda":0,"validos":148,"comparecimento":174
+    }
+  }
+}, {
+  "secao":206,"local":1210,"comparecimento":184,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":144,"14":1,"22":21,"55":3,"70":4
+      },"brancos":2,"nulos":9,"legenda":0,"validos":173,"comparecimento":184
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1010":2,"1011":28,"1177":90,"1311":6,"1313":3,"4040":4,"4422":1,"4444":15,"5505":3,"5555":23,"5577":2
+      },"brancos":0,"nulos":2,"legenda":5,"validos":182,"comparecimento":184
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":1,"10333":3,"11777":16,"13000":1,"13131":1,"15000":1,"15190":1,"15555":1,"20555":1,"22123":1,"22789":2,"40000":3,"40300":1,"43000":23,"43777":5,"44555":1,"55190":6,"55255":1,"55555":57,"55777":43,"55999":2
+      },"brancos":1,"nulos":5,"legenda":7,"validos":178,"comparecimento":184
+    },"SENADOR": {
+      "votos": {
+        "100":34,"101":32,"123":65,"131":69,"155":14,"221":4,"222":18,"444":84,"500":1
+      },"brancos":8,"nulos":39,"legenda":0,"validos":321,"comparecimento":184
+    },"GOVERNADOR": {
+      "votos": {
+        "10":49,"22":1,"50":1,"55":115
+      },"brancos":3,"nulos":15,"legenda":0,"validos":166,"comparecimento":184
+    }
+  }
+}, {
+  "secao":207,"local":1155,"comparecimento":227,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":177,"14":7,"22":33,"55":2,"70":2
+      },"brancos":3,"nulos":3,"legenda":0,"validos":221,"comparecimento":227
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1011":13,"1033":3,"1177":89,"1311":17,"1313":15,"1320":1,"1333":1,"1523":1,"2200":7,"2222":1,"4000":2,"4040":4,"4444":5,"5050":1,"5505":4,"5515":1,"5555":28,"5577":1
+      },"brancos":15,"nulos":9,"legenda":4,"validos":203,"comparecimento":227
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":3,"10333":1,"11777":68,"13000":1,"13131":1,"13333":1,"13555":3,"15111":1,"15190":1,"15555":1,"22100":2,"22122":1,"22123":12,"22200":4,"22222":1,"22789":1,"40000":3,"40222":2,"43000":17,"43777":7,"44000":1,"44111":1,"44222":1,"44555":8,"50180":6,"55015":2,"55190":5,"55255":2,"55555":24,"55777":16
+      },"brancos":14,"nulos":9,"legenda":7,"validos":204,"comparecimento":227
+    },"SENADOR": {
+      "votos": {
+        "100":18,"101":16,"123":47,"131":146,"155":28,"221":4,"222":9,"444":83,"500":4
+      },"brancos":53,"nulos":46,"legenda":0,"validos":355,"comparecimento":227
+    },"GOVERNADOR": {
+      "votos": {
+        "10":55,"22":2,"50":4,"55":130
+      },"brancos":16,"nulos":20,"legenda":0,"validos":191,"comparecimento":227
+    }
+  }
+}, {
+  "secao":209,"local":1236,"comparecimento":213,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":178,"14":7,"22":14,"55":5
+      },"brancos":3,"nulos":6,"legenda":0,"validos":204,"comparecimento":213
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":8,"1111":4,"1177":52,"1311":39,"1313":6,"1320":1,"1390":3,"1400":1,"1414":1,"2200":1,"2222":1,"4000":1,"4015":1,"4040":1,"4420":1,"4444":11,"5019":1,"5515":1,"5555":57,"5577":1
+      },"brancos":7,"nulos":8,"legenda":5,"validos":198,"comparecimento":213
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10333":3,"10777":1,"11777":43,"13000":5,"13555":6,"13900":2,"15555":1,"22123":3,"22200":9,"40000":1,"40222":1,"40300":1,"40400":1,"43000":7,"43777":20,"44000":3,"50180":1,"55015":1,"55190":2,"55255":8,"55555":45,"55777":20,"70456":2,"70777":2
+      },"brancos":6,"nulos":8,"legenda":11,"validos":199,"comparecimento":213
+    },"SENADOR": {
+      "votos": {
+        "100":10,"101":11,"123":21,"131":143,"155":19,"222":7,"444":109,"500":5
+      },"brancos":39,"nulos":62,"legenda":0,"validos":325,"comparecimento":213
+    },"GOVERNADOR": {
+      "votos": {
+        "10":24,"22":1,"50":4,"55":150
+      },"brancos":9,"nulos":25,"legenda":0,"validos":179,"comparecimento":213
+    }
+  }
+}, {
+  "secao":211,"local":1163,"comparecimento":192,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":145,"14":8,"22":30,"55":2,"70":4
+      },"brancos":2,"nulos":1,"legenda":0,"validos":189,"comparecimento":192
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":11,"1026":1,"1111":3,"1177":45,"1311":12,"1320":4,"2222":1,"4004":2,"4040":8,"4400":1,"4422":3,"4444":4,"5019":1,"5515":12,"5555":69,"7022":1
+      },"brancos":9,"nulos":2,"legenda":2,"validos":181,"comparecimento":192
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10000":1,"10111":1,"10333":4,"10777":3,"11777":19,"13000":4,"13189":1,"20111":1,"22123":3,"22200":1,"22789":1,"40000":13,"43000":51,"43777":1,"44000":21,"44111":2,"44555":2,"44777":1,"50180":3,"55015":2,"55111":2,"55190":3,"55555":24,"55777":9,"70777":1
+      },"brancos":8,"nulos":3,"legenda":7,"validos":181,"comparecimento":192
+    },"SENADOR": {
+      "votos": {
+        "100":24,"101":31,"123":57,"131":104,"155":42,"221":1,"222":5,"444":35,"500":9
+      },"brancos":48,"nulos":28,"legenda":0,"validos":308,"comparecimento":192
+    },"GOVERNADOR": {
+      "votos": {
+        "10":72,"22":2,"50":5,"55":92
+      },"brancos":8,"nulos":13,"legenda":0,"validos":171,"comparecimento":192
+    }
+  }
+}, {
+  "secao":212,"local":1090,"comparecimento":186,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":140,"14":4,"22":28,"55":5,"70":2
+      },"brancos":2,"nulos":5,"legenda":0,"validos":179,"comparecimento":186
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":5,"1011":2,"1111":2,"1112":1,"1177":29,"1311":1,"1313":5,"1593":1,"2200":2,"2201":2,"2222":3,"4000":19,"4010":1,"4040":26,"4422":1,"4444":19,"5515":1,"5555":43,"5577":1,"5588":1,"7010":1
+      },"brancos":11,"nulos":4,"legenda":5,"validos":171,"comparecimento":186
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10200":1,"10333":2,"11777":15,"13333":1,"13555":1,"15111":1,"22000":1,"22100":1,"22122":2,"22123":5,"22200":2,"22222":2,"22789":1,"40000":18,"40111":2,"40222":2,"40400":1,"43000":9,"43777":19,"44000":1,"44111":2,"44222":1,"44333":1,"55255":3,"55555":43,"55777":17,"70456":3,"70777":1
+      },"brancos":13,"nulos":7,"legenda":8,"validos":166,"comparecimento":186
+    },"SENADOR": {
+      "votos": {
+        "100":30,"101":20,"123":61,"131":47,"155":33,"221":4,"222":10,"444":96,"500":1
+      },"brancos":29,"nulos":41,"legenda":0,"validos":302,"comparecimento":186
+    },"GOVERNADOR": {
+      "votos": {
+        "10":31,"22":4,"55":128
+      },"brancos":7,"nulos":16,"legenda":0,"validos":163,"comparecimento":186
+    }
+  }
+}, {
+  "secao":218,"local":1228,"comparecimento":88,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":64,"14":1,"22":15,"70":1
+      },"brancos":1,"nulos":6,"legenda":0,"validos":81,"comparecimento":88
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":13,"1011":3,"1177":16,"1311":3,"1313":13,"1414":1,"4000":1,"4015":1,"4040":5,"4400":1,"4422":2,"4444":14,"5505":3,"5515":1,"5555":6
+      },"brancos":1,"nulos":2,"legenda":2,"validos":85,"comparecimento":88
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10200":1,"10333":1,"11777":9,"22123":15,"22200":1,"40000":2,"40111":3,"43000":3,"43777":6,"44000":4,"44222":4,"44555":2,"55255":7,"55555":10,"55777":8,"70456":2
+      },"brancos":2,"nulos":2,"legenda":6,"validos":84,"comparecimento":88
+    },"SENADOR": {
+      "votos": {
+        "100":21,"101":13,"123":17,"131":31,"155":18,"222":11,"444":40
+      },"brancos":11,"nulos":14,"legenda":0,"validos":151,"comparecimento":88
+    },"GOVERNADOR": {
+      "votos": {
+        "10":17,"22":2,"55":60
+      },"brancos":2,"nulos":7,"legenda":0,"validos":79,"comparecimento":88
+    }
+  }
+}, {
+  "secao":219,"local":1201,"comparecimento":123,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":101,"14":3,"22":15,"80":1
+      },"brancos":2,"nulos":1,"legenda":0,"validos":120,"comparecimento":123
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":3,"1011":15,"1033":1,"1111":2,"1177":20,"1311":10,"1313":1,"4000":1,"4040":4,"4444":10,"5505":3,"5515":2,"5555":44
+      },"brancos":2,"nulos":4,"legenda":1,"validos":117,"comparecimento":123
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":3,"10333":2,"10456":1,"11777":24,"13000":2,"13131":1,"13333":1,"13555":3,"15398":1,"22200":2,"40000":8,"40123":1,"43000":6,"43777":12,"50180":1,"55255":5,"55555":26,"55777":17,"55999":1,"70456":1
+      },"brancos":0,"nulos":3,"legenda":2,"validos":120,"comparecimento":123
+    },"SENADOR": {
+      "votos": {
+        "100":11,"101":14,"123":42,"131":80,"155":15,"221":2,"222":3,"277":1,"444":46,"500":2
+      },"brancos":17,"nulos":13,"legenda":0,"validos":216,"comparecimento":123
+    },"GOVERNADOR": {
+      "votos": {
+        "10":38,"22":1,"55":74
+      },"brancos":4,"nulos":6,"legenda":0,"validos":113,"comparecimento":123
+    }
+  }
+}, {
+  "secao":226,"local":1139,"comparecimento":164,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":139,"14":1,"22":14,"55":1,"70":1
+      },"brancos":1,"nulos":7,"legenda":0,"validos":156,"comparecimento":164
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":7,"1010":3,"1026":2,"1033":2,"1177":55,"1311":27,"1313":1,"2222":1,"2233":1,"4040":2,"4444":1,"5505":9,"5515":7,"5555":25
+      },"brancos":5,"nulos":6,"legenda":10,"validos":153,"comparecimento":164
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "11777":10,"15190":1,"22777":1,"40000":5,"43000":4,"43777":27,"44000":1,"44111":1,"44333":4,"44444":1,"44555":4,"44777":2,"55190":2,"55255":8,"55555":48,"55777":18,"70777":1
+      },"brancos":1,"nulos":9,"legenda":16,"validos":154,"comparecimento":164
+    },"SENADOR": {
+      "votos": {
+        "100":20,"101":19,"123":14,"131":90,"155":24,"221":3,"222":15,"444":84,"500":3
+      },"brancos":19,"nulos":37,"legenda":0,"validos":272,"comparecimento":164
+    },"GOVERNADOR": {
+      "votos": {
+        "10":40,"50":2,"55":98
+      },"brancos":6,"nulos":18,"legenda":0,"validos":140,"comparecimento":164
+    }
+  }
+}, {
+  "secao":235,"local":1287,"comparecimento":121,"cargos": {
+    "PRESIDENTE": {
+      "votos": {
+        "13":87,"14":4,"22":24,"55":1,"70":1
+      },"brancos":1,"nulos":3,"legenda":0,"validos":117,"comparecimento":121
+    },"DEPUTADO FEDERAL": {
+      "votos": {
+        "1000":1,"1011":22,"1023":3,"1026":2,"1177":24,"1311":4,"1313":3,"1333":1,"2200":2,"2222":2,"4000":1,"4040":3,"4056":1,"4422":1,"4444":19,"5505":1,"5555":19,"5588":1
+      },"brancos":4,"nulos":6,"legenda":1,"validos":111,"comparecimento":121
+    },"DEPUTADO ESTADUAL": {
+      "votos": {
+        "10111":11,"10333":2,"11777":26,"13000":1,"13555":1,"15190":1,"22222":1,"40000":5,"43000":3,"43777":1,"44000":1,"44555":5,"44777":4,"50180":1,"55190":4,"55255":3,"55555":16,"55777":19,"70000":1,"70123":3,"70456":1,"70777":2
+      },"brancos":1,"nulos":5,"legenda":3,"validos":115,"comparecimento":121
+    },"SENADOR": {
+      "votos": {
+        "100":33,"101":16,"123":30,"131":58,"155":14,"221":4,"222":8,"444":38,"500":2
+      },"brancos":14,"nulos":25,"legenda":0,"validos":203,"comparecimento":121
+    },"GOVERNADOR": {
+      "votos": {
+        "10":48,"22":2,"27":1,"50":5,"55":53
+      },"brancos":4,"nulos":8,"legenda":0,"validos":109,"comparecimento":121
+    }
+  }
+}];
+const fmt=n=>Number(n||0).toLocaleString('pt-BR');
+const byCargoNum=new Map(CANDIDATES.map(c=>[c.cargo+'|'+c.numero,c]));
+const schoolMap=new Map(SCHOOLS.map(s=>[s.codigo,s]));
+const AGGREGATED_SECTIONS= {
+  "236":197
+};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=> {
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById(b.dataset.tab).classList.add('active')
+});
+const school=document.getElementById('school'), section=document.getElementById('section'), cargo=document.getElementById('cargo'), view=document.getElementById('view');
+SCHOOLS.forEach(s=>school.insertAdjacentHTML('beforeend',`<option value="${s.codigo}">${s.codigo} - ${s.nome}</option>`));
+function renderSections() {
+  const code=school.value;
+  section.innerHTML='<option value="">Todas as seções'+(code?' deste local':'')+'</option>';
+  let secs=code?(schoolMap.get(code)?.secoes||[]):DATA.map(d=>d.secao);
+  secs.sort((a,b)=>a-b).forEach(s=> {
+    const agg=AGGREGATED_SECTIONS[String(s)];
+    const label=agg?`Seção ${s} (agregada à ${String(agg).padStart(4,'0')})`:`Seção ${s}`;
+    section.insertAdjacentHTML('beforeend',`<option value="${s}">${label}</option>`)
+  });
+  updateAll()
+}
+school.addEventListener('change',renderSections);
+section.addEventListener('change',updateAll);
+cargo.addEventListener('change',updateAll);
+view.addEventListener('change',updateAll);
+function candidate(inputId,cardId) {
+  const num=document.getElementById(inputId).value.trim();
+  const c=byCargoNum.get(cargo.value+'|'+num);
+  const card=document.getElementById(cardId);
+  if(!num) {
+    card.innerHTML='<div class="empty">Digite o número para localizar o candidato.</div>';
+    return null
+  }
+  if(!c) {
+    card.innerHTML='<div class="empty">Nenhum candidato encontrado com esse número neste cargo.</div>';
+    return null
+  }
+  card.innerHTML=`<div class="num">Nº ${c.numero}</div><div class="name">${c.nome}</div><span class="party">${c.partido} • ${c.partido_num}</span>`;
+  return c
+}
+function scopeRows() {
+  const selected=section.value;
+  const effective=selected&&AGGREGATED_SECTIONS[selected]?String(AGGREGATED_SECTIONS[selected]):selected;
+  return DATA.filter(d=>(!school.value||String(d.local)===school.value)&&(!effective||String(d.secao)===effective))
+}
+function aggregate(num) {
+  const rows=scopeRows();
+  let votes=0,valid=0,blank=0,nulls=0,leg=0;
+  for(const d of rows) {
+    const x=d.cargos[cargo.value];
+    if(!x)continue;
+    votes+=Number(x.votos[num]||0);
+    valid+=x.validos;
+    blank+=x.brancos;
+    nulls+=x.nulos;
+    leg+=x.legenda
+  }
+  return {
+    votes,valid,blank,nulls,leg,sections:rows.length
+  }
+}
+function updateAll() {
+  const a=candidate('candA','cardA'),b=candidate('candB','cardB');
+  const sa=document.getElementById('scoreA'),sb=document.getElementById('scoreB'),pa=document.getElementById('pctA'),pb=document.getElementById('pctB'),na=document.getElementById('nameA'),nb=document.getElementById('nameB');
+  const aa=a?aggregate(a.numero):null,bb=b?aggregate(b.numero):null;
+  const pct=x=>x&&x.valid?100*x.votes/x.valid:0;
+  na.textContent=a?a.nome:'Candidato A';
+  nb.textContent=b?b.nome:'Candidato B';
+  if(view.value==='abs') {
+    sa.textContent=aa?fmt(aa.votes):'—';
+    sb.textContent=bb?fmt(bb.votes):'—';
+    pa.textContent=aa?`${pct(aa).toFixed(2).replace('.',',')}% dos válidos` :'';
+    pb.textContent=bb?`${pct(bb).toFixed(2).replace('.',',')}% dos válidos`:''
+  }
+  else {
+    sa.textContent=aa?pct(aa).toFixed(2).replace('.',',')+'%':'—';
+    sb.textContent=bb?pct(bb).toFixed(2).replace('.',',')+'%':'—';
+    pa.textContent=aa?`${fmt(aa.votes)} votos`:'';
+    pb.textContent=bb?`${fmt(bb.votes)} votos`:''
+  }
+  document.getElementById('barA').style.width=(aa?Math.min(100,pct(aa)):0)+'%';
+  document.getElementById('barB').style.width=(bb?Math.min(100,pct(bb)):0)+'%';
+  const rows=scopeRows();
+  const loc=school.value?schoolMap.get(school.value):null;
+  const sel=section.value;
+  const agg=sel&&AGGREGATED_SECTIONS[sel];
+  document.getElementById('scopeMeta').textContent=`Escopo: ${loc?loc.nome:'município'}${sel?' • seção '+sel+(agg?' (agregada à '+agg+')':''):''} • ${rows.length} boletim(ns) considerado(s).`;
+  const sn=document.getElementById('scopeNotice');
+  if(agg)sn.innerHTML=`<b>Seção agregada:</b> a seção ${sel} foi agregada à seção ${agg}. O boletim da seção ${agg} contém a votação conjunta; não é possível separar os votos individuais da ${sel} a partir desse BU.`;
+  else sn.textContent='Dados obtidos diretamente dos boletins de urna enviados.'
+}
+['candA','candB'].forEach(id=>document.getElementById(id).addEventListener('input',updateAll));
+function homeCandidateMap(office){
+  return new Map(CANDIDATES.filter(c=>c.cargo===office).map(c=>[String(c.numero),c]));
+}
+function homeAggregateOffice(office, rows=DATA){
+  const votes={}; let valid=0, blank=0, nulls=0, leg=0;
+  for(const d of rows){
+    const x=d.cargos[office]; if(!x) continue;
+    valid+=Number(x.validos||0); blank+=Number(x.brancos||0); nulls+=Number(x.nulos||0); leg+=Number(x.legenda||0);
+    for(const [num,v] of Object.entries(x.votos||{})) votes[num]=(votes[num]||0)+Number(v||0);
+  }
+  return {votes,valid,blank,nulls,leg};
+}
+let homeOffice='DEPUTADO ESTADUAL';
+function renderHome(office=homeOffice, rows=DATA, label='Riachão do Dantas'){
+  homeOffice=office;
+  document.querySelectorAll('.office-btn').forEach(b=>b.classList.toggle('active',b.dataset.office===office));
+  const a=homeAggregateOffice(office,rows), cmap=homeCandidateMap(office);
+  document.getElementById('homeStats').innerHTML=`<div class="mini-stat"><span>Votos válidos</span><b>${fmt(a.valid)}</b></div><div class="mini-stat"><span>Brancos</span><b>${fmt(a.blank)}</b></div><div class="mini-stat"><span>Nulos</span><b>${fmt(a.nulls)}</b></div>`;
+  const arr=Object.entries(a.votes).map(([num,votes])=>({num,votes,c:cmap.get(num)})).sort((x,y)=>y.votes-x.votes);
+  const max=arr.length?arr[0].votes:1;
+  const shown=arr.slice(0,office.startsWith('DEPUTADO')?15:10);
+  document.getElementById('homeRanking').innerHTML=shown.map((r,i)=>{
+    const nm=r.c?r.c.nome:`Número ${r.num}`, pt=r.c?r.c.partido:'';
+    const pct=a.valid?100*r.votes/a.valid:0;
+    return `<div class="rank-row"><div><div class="rank-name">${i+1}. ${nm}</div><div class="rank-meta">${pt?pt+' • ':''}${r.num} • ${label}</div></div><div class="rank-score"><b>${fmt(r.votes)}</b><span>${pct.toFixed(2).replace('.',',')}%</span></div><div class="rank-bar"><i style="width:${Math.max(1,100*r.votes/max)}%"></i></div></div>`;
+  }).join('') || '<div class="empty">Sem votos disponíveis para este cargo.</div>';
+}
+function initHome(){
+  const aptos=17752;
+  const comp=DATA.reduce((t,d)=>t+Number(d.comparecimento||0),0);
+  const abst=Math.max(0,aptos-comp);
+  document.getElementById('homeComparecimento').textContent=fmt(comp);
+  document.getElementById('homeComparecimentoPct').textContent=(100*comp/aptos).toFixed(2).replace('.',',')+'% dos aptos';
+  document.getElementById('homeAbstencoes').textContent=fmt(abst);
+  document.getElementById('homeAbstencoesPct').textContent=(100*abst/aptos).toFixed(2).replace('.',',')+'% dos aptos';
+  const hs=document.getElementById('homeSchool');
+  SCHOOLS.forEach(s=>hs.insertAdjacentHTML('beforeend',`<option value="${s.codigo}">${s.codigo} - ${s.nome}</option>`));
+  document.querySelectorAll('.office-btn').forEach(b=>b.addEventListener('click',()=>renderHome(b.dataset.office,DATA,'Riachão do Dantas')));
+  document.getElementById('homeGo').addEventListener('click',()=>{
+    const code=hs.value, off=document.getElementById('homeOffice').value;
+    if(!code){hs.focus();return;}
+    const loc=schoolMap.get(code); const rows=DATA.filter(d=>String(d.local)===String(code));
+    renderHome(off,rows,loc?loc.nome:code);
+    document.querySelector('.home-results').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  renderHome();
+}
+function renderTable() {
+  document.getElementById('schoolTable').innerHTML=SCHOOLS.map(s=>`<tr><td>${s.codigo}</td><td>${s.nome}</td><td>${s.secoes.length?s.secoes.map(x=>AGGREGATED_SECTIONS[String(x)]?x+' (agregada à '+AGGREGATED_SECTIONS[String(x)]+')':x).join(', '):'—'}</td><td>${s.carregadas}/${s.qtd_secoes}</td><td>${s.faltantes?'<span class="pill warn">incompleto</span>':'<span class="pill">completo</span>'}</td></tr>`).join('')
+}
+renderTable();
+renderSections();
+updateAll();
+initHome();
+  </script>
+ </body>
+</html>
